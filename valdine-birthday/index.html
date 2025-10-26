@@ -269,6 +269,38 @@
                 height: 50px;
             }
         }
+        
+        /* Mobile Video Gallery Improvements */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Mobile video thumbnail optimization */
+        .video-thumb-mobile {
+            min-width: 60px;
+            width: 60px;
+            height: 60px;
+        }
+        
+        @media (min-width: 768px) {
+            .video-thumb-mobile {
+                min-width: 80px;
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        /* Touch-friendly buttons */
+        @media (max-width: 768px) {
+            .touch-target {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-pink-100 via-purple-50 to-yellow-100 min-h-screen overflow-x-hidden">
@@ -302,7 +334,7 @@
             </ul>
             <div class="flex items-center space-x-2 md:space-x-4">
                 <button id="openCardBtn" class="bg-gradient-to-r from-pink-400 to-purple-500 text-white px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-semibold hover:from-pink-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
-                    <i class="fa-solid fa-gift mr-1 md:mr-2"></i><span class="hidden sm:inline">Open Card</span><span class="sm:hidden">Card</span>
+                    <i class="fa-solid fa-star mr-1 md:mr-2"></i><span class="hidden sm:inline">Write a Wish</span><span class="sm:hidden">Wish</span>
                 </button>
             </div>
         </nav>
@@ -336,8 +368,9 @@
                 My Dearest Valdine, Happy Birthday
             </p>
             <p class="text-base sm:text-lg md:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
-                Right now, at the stroke of midnight, I'm sending you all the love my heart can hold.
-                You are not just my wife; you are my BEST FRIEND, MY SOULMATE, MY EVERYTHING. 💕
+                Welcome to a digital celebration crafted just for you! From thousands of miles away to building our life together in Canada, 
+                every pixel on this page represents a moment of love, a memory cherished, and a dream fulfilled. Today, we celebrate not just 
+                another year of your beautiful existence, but the incredible woman who transformed my world completely. 💕
             </p>
         </div>
 
@@ -633,81 +666,59 @@
     </div>
 </section>
 
-<!-- Romantic Surprise Game Section -->
+<!-- Romantic Surprise Slider Section -->
 <section id="surprise" class="py-16 md:py-24 bg-gradient-to-br from-purple-200 via-pink-200 to-rose-200">
     <div class="max-w-6xl mx-auto px-4 md:px-6">
         <div class="text-center mb-12 md:mb-16">
-            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">🎮 Guess Your Surprise! 🎮</h2>
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">🎁 Guess Your Surprise! 🎁</h2>
             <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
-                I have 3 special surprises planned for you today! Can you guess which one you'll get? 💕
+                Explore 100 possible surprises I have planned for you! Swipe through and see what catches your heart 💕
             </p>
         </div>
 
-        <div class="relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-4 md:border-8 border-pink-300 mx-auto max-w-4xl">
-            <!-- Game Header -->
-            <div class="text-center mb-8 md:mb-12">
-                <h3 class="script-font text-2xl md:text-3xl lg:text-4xl font-bold text-pink-600 mb-4">Choose Your Surprise!</h3>
-                <div class="flex justify-center items-center gap-4 md:gap-6 flex-wrap">
-                    <div class="text-center">
-                        <p class="text-sm md:text-base text-purple-600 font-semibold">Attempts</p>
-                        <p class="text-2xl md:text-3xl font-bold text-pink-500" id="attemptCount">0</p>
-                    </div>
-                    <div class="text-2xl text-pink-400">💕</div>
-                    <div class="text-center">
-                        <p class="text-sm md:text-base text-purple-600 font-semibold">Streak</p>
-                        <p class="text-2xl md:text-3xl font-bold text-purple-500" id="streakCount">0</p>
-                    </div>
+        <!-- Surprise Slider Container -->
+        <div class="relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-2xl border-4 md:border-8 border-pink-300 mx-auto max-w-4xl">
+
+            <!-- Progress Bar -->
+            <div class="mb-6 md:mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <p class="text-sm md:text-base font-semibold text-purple-600">
+                        <span id="surpriseCounter">1</span> / <span id="surpriseTotal">100</span>
+                    </p>
+                    <p class="text-xs md:text-sm text-purple-500">Swipe or use arrows</p>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2 md:h-3 overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-pink-500 to-purple-500 h-full transition-all duration-500" style="width: 1%;"></div>
                 </div>
             </div>
 
-            <!-- Game Choices -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
-                <!-- Massage Choice -->
-                <button onclick="guessGame('massage')" class="game-choice-btn group relative overflow-hidden rounded-2xl p-6 md:p-8 bg-gradient-to-br from-blue-100 to-cyan-100 border-4 border-blue-300 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-200 to-cyan-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="text-5xl md:text-6xl mb-3 md:mb-4">💆</div>
-                        <h4 class="script-font text-xl md:text-2xl font-bold text-blue-700 mb-2">Relaxing Massage</h4>
-                        <p class="text-sm md:text-base text-blue-600">A soothing experience just for you</p>
-                    </div>
-                </button>
+            <!-- Main Surprise Card -->
+            <div class="relative h-64 md:h-80 mb-8 md:mb-12 overflow-hidden rounded-2xl">
+                <div id="surpriseSlider" class="flex transition-transform duration-500 ease-out h-full">
+                    <!-- Cards will be generated by JavaScript -->
+                </div>
 
-                <!-- Flowers Choice -->
-                <button onclick="guessGame('flowers')" class="game-choice-btn group relative overflow-hidden rounded-2xl p-6 md:p-8 bg-gradient-to-br from-rose-100 to-pink-100 border-4 border-rose-300 hover:border-rose-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                    <div class="absolute inset-0 bg-gradient-to-br from-rose-200 to-pink-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="text-5xl md:text-6xl mb-3 md:mb-4">🌹</div>
-                        <h4 class="script-font text-xl md:text-2xl font-bold text-rose-700 mb-2">Beautiful Flowers</h4>
-                        <p class="text-sm md:text-base text-rose-600">A bouquet of love and beauty</p>
-                    </div>
+                <!-- Navigation Arrows -->
+                <button id="surprisePrevBtn" class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-90 hover:bg-opacity-100 text-pink-600 hover:text-pink-700 rounded-full p-2 md:p-3 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95">
+                    <i class="fa-solid fa-chevron-left text-lg md:text-2xl"></i>
                 </button>
-
-                <!-- Restaurant Choice -->
-                <button onclick="guessGame('restaurant')" class="game-choice-btn group relative overflow-hidden rounded-2xl p-6 md:p-8 bg-gradient-to-br from-amber-100 to-orange-100 border-4 border-amber-300 hover:border-amber-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber-200 to-orange-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-                    <div class="relative z-10 text-center">
-                        <div class="text-5xl md:text-6xl mb-3 md:mb-4">🍽️</div>
-                        <h4 class="script-font text-xl md:text-2xl font-bold text-amber-700 mb-2">Fine Dining</h4>
-                        <p class="text-sm md:text-base text-amber-600">An unforgettable dinner experience</p>
-                    </div>
+                <button id="surpriseNextBtn" class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white bg-opacity-90 hover:bg-opacity-100 text-pink-600 hover:text-pink-700 rounded-full p-2 md:p-3 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95">
+                    <i class="fa-solid fa-chevron-right text-lg md:text-2xl"></i>
                 </button>
             </div>
 
-            <!-- Result Display Area -->
-            <div id="gameResult" class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl md:rounded-2xl p-6 md:p-8 min-h-[120px] md:min-h-[150px] flex items-center justify-center hidden">
-                <div class="text-center">
-                    <p id="resultMessage" class="text-base md:text-lg lg:text-xl text-purple-700 font-semibold mb-3"></p>
-                    <button onclick="resetGame()" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
-                        Try Again 💕
-                    </button>
+            <!-- Dots Navigation -->
+            <div class="flex justify-center gap-1.5 md:gap-2 mb-8 md:mb-12 flex-wrap max-h-12 overflow-y-auto">
+                <div id="surpriseDots" class="flex gap-1.5 md:gap-2 flex-wrap justify-center">
+                    <!-- Dots will be generated by JavaScript -->
                 </div>
             </div>
 
-            <!-- Instructions -->
-            <div class="mt-8 md:mt-12 p-4 md:p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl border-2 border-pink-200">
+            <!-- Hint -->
+            <div class="p-4 md:p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl border-2 border-pink-200">
                 <p class="text-center text-sm md:text-base text-purple-700">
                     <i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>
-                    <strong>Hint:</strong> The real surprise is that I've already decided what you're getting! 😉 But have fun trying to guess! 💕
+                    <strong>Hint:</strong> The real surprise is that I've already decided what you're getting! 😉 But have fun exploring! 💕
                 </p>
             </div>
         </div>
@@ -715,48 +726,67 @@
 </section>
 
 <!-- Video Gallery Section -->
-<section id="video-gallery" class="py-16 md:py-24 bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
-    <div class="max-w-6xl mx-auto px-4 md:px-6">
-        <div class="text-center mb-12 md:mb-16">
-            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Videos Gallery</h2>
-            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+<section id="video-gallery" class="py-12 md:py-24 bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
+    <div class="max-w-5xl mx-auto px-3 md:px-6">
+        <div class="text-center mb-8 md:mb-16">
+            <h2 class="script-font text-3xl md:text-5xl lg:text-6xl font-bold gradient-text mb-3 md:mb-6">Videos Gallery</h2>
+            <p class="text-sm md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-3">
                 Beautiful memories captured in motion - every frame tells our love story
             </p>
         </div>
 
-        <!-- Video Slider -->
-        <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-pink-300">
+        <!-- Mobile-First Video Slider -->
+        <div class="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
             <!-- Main Video Display -->
-            <div class="relative w-full bg-black rounded-2xl overflow-hidden" style="aspect-ratio: 16/9;">
-                <video id="mainVideo" class="w-full h-full object-contain" controls>
+            <div class="relative w-full bg-black" style="aspect-ratio: 16/9;">
+                <video id="mainVideo" class="w-full h-full object-contain" controls playsinline>
                     <source src="/images/Valdine (1).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                
+                <!-- Mobile Video Counter -->
+                <div class="absolute top-2 right-2 md:top-4 md:right-4 bg-black bg-opacity-70 text-white px-2 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-base font-bold">
+                    <span id="videoCounter">1</span> / <span id="videoTotal">8</span>
+                </div>
             </div>
 
-            <!-- Navigation Buttons -->
-            <div class="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-4 pointer-events-none">
-                <button id="videoPrevBtn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:from-pink-600 hover:to-red-600 transform hover:scale-110 transition-all duration-300 pointer-events-auto">
-                    <i class="fa-solid fa-chevron-left text-lg md:text-xl"></i>
-                </button>
-                <button id="videoNextBtn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:from-pink-600 hover:to-red-600 transform hover:scale-110 transition-all duration-300 pointer-events-auto">
-                    <i class="fa-solid fa-chevron-right text-lg md:text-xl"></i>
-                </button>
-            </div>
+            <!-- Mobile Navigation Controls -->
+            <div class="bg-gradient-to-r from-pink-50 to-purple-50 p-3 md:p-6">
+                <!-- Mobile Swipe Instructions -->
+                <div class="text-center mb-3 md:hidden">
+                    <p class="text-purple-600 text-sm font-medium">👈 Swipe or use arrows to browse videos 👉</p>
+                </div>
 
-            <!-- Video Counter -->
-            <div class="absolute top-4 right-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm md:text-base font-bold shadow-lg">
-                <span id="videoCounter">1</span> / <span id="videoTotal">8</span>
-            </div>
+                <!-- Desktop/Mobile Navigation Buttons -->
+                <div class="flex items-center justify-between mb-4">
+                    <button id="videoPrevBtn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white p-2 md:p-3 rounded-full shadow-lg hover:from-pink-600 hover:to-red-600 active:scale-95 transition-all duration-200">
+                        <i class="fa-solid fa-chevron-left text-sm md:text-lg"></i>
+                    </button>
+                    
+                    <!-- Video Title/Description -->
+                    <div class="text-center flex-1 mx-3">
+                        <h3 id="videoTitle" class="script-font text-lg md:text-2xl font-bold text-purple-600">Our Love Story</h3>
+                    </div>
+                    
+                    <button id="videoNextBtn" class="bg-gradient-to-r from-pink-500 to-red-500 text-white p-2 md:p-3 rounded-full shadow-lg hover:from-pink-600 hover:to-red-600 active:scale-95 transition-all duration-200">
+                        <i class="fa-solid fa-chevron-right text-sm md:text-lg"></i>
+                    </button>
+                </div>
 
-            <!-- Dots Navigation -->
-            <div class="flex justify-center gap-2 md:gap-3 p-4 md:p-6 bg-gradient-to-r from-pink-50 to-purple-50">
-                <div id="videoDots" class="flex gap-2 md:gap-3 flex-wrap justify-center"></div>
-            </div>
+                <!-- Mobile-Optimized Dots Navigation -->
+                <div class="flex justify-center mb-4">
+                    <div id="videoDots" class="flex gap-1.5 md:gap-2 flex-wrap justify-center max-w-full"></div>
+                </div>
 
-            <!-- Thumbnail Preview -->
-            <div class="bg-gradient-to-r from-pink-50 to-purple-50 p-4 md:p-6 border-t-4 border-pink-200">
-                <div id="videoThumbnails" class="flex gap-2 md:gap-3 overflow-x-auto pb-2 justify-center flex-wrap"></div>
+                <!-- Mobile-Optimized Thumbnail Carousel -->
+                <div class="relative">
+                    <div class="overflow-x-auto scrollbar-hide">
+                        <div id="videoThumbnails" class="flex gap-2 md:gap-3 pb-2 min-w-full"></div>
+                    </div>
+                    <!-- Fade edges for mobile scroll indicator -->
+                    <div class="absolute top-0 left-0 w-4 h-full bg-gradient-to-r from-pink-50 to-transparent pointer-events-none md:hidden"></div>
+                    <div class="absolute top-0 right-0 w-4 h-full bg-gradient-to-l from-pink-50 to-transparent pointer-events-none md:hidden"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -1554,166 +1584,187 @@
         observer.observe(writeWishModal, { attributes: true, attributeFilter: ['class'] });
     }
 
-    // ===== ROMANTIC SURPRISE GAME =====
-    let gameState = {
-        attempts: 0,
-        streak: 0,
-        gameActive: true
-    };
-
-    // Array of 100+ funny/romantic wrong answer messages
-    const wrongMessages = [
-        "Oops! Not quite! 😄 But I love your optimism!",
-        "Nice try, beautiful! 💕 But that's not it!",
-        "So close! But not this time! 😉",
-        "Wrong guess! But you're adorable for trying! 🥰",
-        "Not today, my love! 💋",
-        "Nope! But I appreciate the effort! 😊",
-        "That's not it! But I love you anyway! 💕",
-        "Wrong! But you're still my favorite! 👑",
-        "Not this one! Keep trying! 🎮",
-        "Nope! But you're getting warmer... just kidding! 😄",
-        "That's not the one! But you're amazing! ✨",
-        "Wrong answer! But you're the right person! 💕",
-        "Not quite! But I'm impressed by your confidence! 😎",
-        "Nope! But I love your enthusiasm! 🎉",
-        "That's not it! But you're still my queen! 👑",
-        "Wrong! But you're still beautiful! 🌹",
-        "Not this time! But I'm enjoying this! 😄",
-        "Nope! But you're making me smile! 😊",
-        "That's not the surprise! But you are! 💕",
-        "Wrong guess! But you're my favorite person! 🥰",
-        "Not today! But every day with you is a surprise! 💕",
-        "Nope! But I love your determination! 💪",
-        "That's not it! But you're perfect! 😍",
-        "Wrong! But you're still my everything! 💕",
-        "Not this one! But you're my one and only! 💕",
-        "Nope! But you're the real surprise! 🎁",
-        "That's not the answer! But you're the answer to my prayers! 🙏",
-        "Wrong! But you're still incredible! 🌟",
-        "Not quite! But I'm loving this game! 🎮",
-        "Nope! But you're winning my heart all over again! 💕",
-        "That's not it! But you're it for me! 💕",
-        "Wrong guess! But you're my favorite guess! 😄",
-        "Not this time! But you're timeless! ⏰",
-        "Nope! But you're priceless! 💎",
-        "That's not the surprise! But you're my biggest surprise! 🎁",
-        "Wrong! But you're still my dream! 💭",
-        "Not today! But today is about celebrating you! 🎉",
-        "Nope! But you're still my favorite! 💕",
-        "That's not it! But you're it! 💕",
-        "Wrong answer! But you're the right answer! 💕",
-        "Not this one! But you're the one! 💕",
-        "Nope! But you're still amazing! 🌟",
-        "That's not the choice! But you're my choice! 💕",
-        "Wrong! But you're still my queen! 👑",
-        "Not quite! But you're quite perfect! 😍",
-        "Nope! But you're still my favorite! 💕",
-        "That's not it! But you're everything! 💕",
-        "Wrong guess! But you're my best guess! 💕",
-        "Not this time! But you're timeless! 💕",
-        "Nope! But you're still incredible! ✨",
-        "That's not the surprise! But you're the best surprise! 🎁",
-        "Wrong! But you're still my love! 💕",
-        "Not today! But you're my today and tomorrow! 💕",
-        "Nope! But you're still my everything! 💕",
-        "That's not it! But you're it for me! 💕",
-        "Wrong answer! But you're my favorite answer! 💕",
-        "Not this one! But you're my favorite one! 💕",
-        "Nope! But you're still my queen! 👑",
-        "That's not the choice! But you're my choice! 💕",
-        "Wrong! But you're still my soulmate! 💕",
-        "Not quite! But you're quite something! 😍",
-        "Nope! But you're still my favorite! 💕",
-        "That's not it! But you're everything to me! 💕",
-        "Wrong guess! But you're my best guess ever! 💕",
-        "Not this time! But you're my forever! 💕",
-        "Nope! But you're still amazing! ✨",
-        "That's not the surprise! But you're my greatest surprise! 🎁",
-        "Wrong! But you're still my love! 💕",
-        "Not today! But you're my every day! 💕",
-        "Nope! But you're still my everything! 💕",
-        "That's not it! But you're it! 💕",
-        "Wrong answer! But you're my favorite! 💕",
-        "Not this one! But you're my favorite one! 💕",
-        "Nope! But you're still my queen! 👑",
-        "That's not the choice! But you're my choice! 💕",
-        "Wrong! But you're still my soulmate! 💕",
-        "Not quite! But you're quite perfect! 😍",
-        "Nope! But you're still my favorite! 💕",
-        "That's not it! But you're everything! 💕",
-        "Wrong guess! But you're my best guess! 💕",
-        "Not this time! But you're my forever! 💕",
-        "Nope! But you're still incredible! ✨",
-        "That's not the surprise! But you're the best surprise! 🎁",
-        "Wrong! But you're still my love! 💕",
-        "Not today! But you're my today! 💕",
-        "Nope! But you're still my everything! 💕",
-        "That's not it! But you're it for me! 💕",
-        "Wrong answer! But you're my favorite answer! 💕",
-        "Not this one! But you're my favorite one! 💕",
-        "Nope! But you're still my queen! 👑",
-        "That's not the choice! But you're my choice! 💕",
-        "Wrong! But you're still my soulmate! 💕",
-        "Not quite! But you're quite something! 😍",
-        "Nope! But you're still my favorite! 💕",
-        "That's not it! But you're everything to me! 💕",
-        "Wrong guess! But you're my best guess ever! 💕",
-        "Not this time! But you're my forever! 💕",
-        "Nope! But you're still amazing! ✨",
-        "That's not the surprise! But you're my greatest surprise! 🎁"
+    // ===== ROMANTIC SURPRISE SLIDER =====
+    const surprises = [
+        { emoji: '💆', title: 'Relaxing Massage', desc: 'A soothing spa experience just for you' },
+        { emoji: '🌹', title: 'Beautiful Flowers', desc: 'A stunning bouquet of your favorite flowers' },
+        { emoji: '🍽️', title: 'Fine Dining', desc: 'An unforgettable dinner at a romantic restaurant' },
+        { emoji: '✈️', title: 'Weekend Getaway', desc: 'A surprise trip to somewhere special' },
+        { emoji: '💎', title: 'Jewelry', desc: 'A beautiful piece to match your beauty' },
+        { emoji: '🎭', title: 'Theater Show', desc: 'An evening of entertainment and culture' },
+        { emoji: '🏖️', title: 'Beach Day', desc: 'A romantic day by the ocean' },
+        { emoji: '🎂', title: 'Homemade Cake', desc: 'Your favorite cake made with love' },
+        { emoji: '📸', title: 'Photo Shoot', desc: 'Professional photos of us together' },
+        { emoji: '🎵', title: 'Concert Tickets', desc: 'See your favorite artist live' },
+        { emoji: '🧘', title: 'Yoga Retreat', desc: 'A peaceful day of wellness and relaxation' },
+        { emoji: '🍷', title: 'Wine Tasting', desc: 'An elegant wine experience' },
+        { emoji: '🎨', title: 'Art Class', desc: 'Create something beautiful together' },
+        { emoji: '🌙', title: 'Stargazing', desc: 'A romantic night under the stars' },
+        { emoji: '🎪', title: 'Circus Show', desc: 'An evening of wonder and amazement' },
+        { emoji: '🏰', title: 'Castle Tour', desc: 'Explore history and beauty together' },
+        { emoji: '🍰', title: 'Dessert Tasting', desc: 'Sweet treats from the best bakery' },
+        { emoji: '🚁', title: 'Helicopter Ride', desc: 'See the world from above' },
+        { emoji: '💅', title: 'Spa Day', desc: 'Pampering and relaxation for you' },
+        { emoji: '🎁', title: 'Mystery Box', desc: 'A surprise gift wrapped with love' },
+        { emoji: '🌺', title: 'Garden Picnic', desc: 'A romantic picnic in a beautiful garden' },
+        { emoji: '🎸', title: 'Live Music Night', desc: 'An intimate evening with live music' },
+        { emoji: '🏨', title: 'Luxury Hotel', desc: 'A night in a beautiful hotel' },
+        { emoji: '🍕', title: 'Pizza Night', desc: 'Homemade pizza and movie night' },
+        { emoji: '🌸', title: 'Flower Arrangement', desc: 'Learn to arrange flowers together' },
+        { emoji: '🎬', title: 'Movie Marathon', desc: 'Your favorite movies and snacks' },
+        { emoji: '🚴', title: 'Bike Ride', desc: 'An adventure on two wheels' },
+        { emoji: '🍜', title: 'Cooking Class', desc: 'Learn to cook a new cuisine together' },
+        { emoji: '🌊', title: 'Surfing Lesson', desc: 'Ride the waves together' },
+        { emoji: '🎯', title: 'Adventure Park', desc: 'Fun activities and thrills' },
+        { emoji: '🧳', title: 'Road Trip', desc: 'An adventure on the open road' },
+        { emoji: '🎪', title: 'Amusement Park', desc: 'A day of fun and laughter' },
+        { emoji: '🌅', title: 'Sunrise Hike', desc: 'Watch the sunrise from a mountain' },
+        { emoji: '🍫', title: 'Chocolate Tasting', desc: 'Premium chocolates from around the world' },
+        { emoji: '🎤', title: 'Karaoke Night', desc: 'Sing your hearts out together' },
+        { emoji: '🏃', title: 'Marathon Training', desc: 'Train together for a race' },
+        { emoji: '🌴', title: 'Tropical Paradise', desc: 'A vacation to a tropical island' },
+        { emoji: '🎓', title: 'Online Course', desc: 'Learn something new together' },
+        { emoji: '🍣', title: 'Sushi Making', desc: 'Create sushi together' },
+        { emoji: '🎨', title: 'Painting Date', desc: 'Paint and create art together' },
+        { emoji: '🌲', title: 'Forest Walk', desc: 'A peaceful walk in nature' },
+        { emoji: '🎭', title: 'Comedy Show', desc: 'Laugh together at a comedy show' },
+        { emoji: '🏊', title: 'Swimming Pool', desc: 'A fun day at the pool' },
+        { emoji: '🍰', title: 'Baking Together', desc: 'Bake your favorite treats' },
+        { emoji: '🌹', title: 'Rose Garden', desc: 'A romantic walk through a rose garden' },
+        { emoji: '🎸', title: 'Guitar Lesson', desc: 'Learn to play guitar together' },
+        { emoji: '🌟', title: 'Planetarium', desc: 'Explore the universe together' },
+        { emoji: '🍽️', title: 'Cooking Dinner', desc: 'Cook a romantic dinner together' },
+        { emoji: '🎪', title: 'Circus Acrobatics', desc: 'Learn circus skills together' },
+        { emoji: '🌺', title: 'Botanical Garden', desc: 'Explore exotic plants and flowers' },
+        { emoji: '🎬', title: 'Film Festival', desc: 'Attend a film festival together' },
+        { emoji: '🏖️', title: 'Sunset Beach', desc: 'Watch the sunset on the beach' },
+        { emoji: '🎨', title: 'Pottery Class', desc: 'Create pottery together' },
+        { emoji: '🍷', title: 'Wine & Cheese', desc: 'An elegant wine and cheese evening' },
+        { emoji: '🌙', title: 'Moonlight Dance', desc: 'Dance under the moonlight' },
+        { emoji: '🎁', title: 'Luxury Perfume', desc: 'A beautiful fragrance just for you' },
+        { emoji: '🏰', title: 'Historical Tour', desc: 'Explore historical sites together' },
+        { emoji: '🌸', title: 'Flower Festival', desc: 'Celebrate flowers at a festival' },
+        { emoji: '🎵', title: 'Music Festival', desc: 'Enjoy live music all day' },
+        { emoji: '🍕', title: 'Italian Dinner', desc: 'Authentic Italian cuisine' },
+        { emoji: '🌊', title: 'Snorkeling', desc: 'Explore underwater beauty' },
+        { emoji: '🎯', title: 'Escape Room', desc: 'Solve puzzles together' },
+        { emoji: '🧳', title: 'City Exploration', desc: 'Explore a new city together' },
+        { emoji: '🎪', title: 'Circus Training', desc: 'Learn circus arts' },
+        { emoji: '🌅', title: 'Mountain Sunrise', desc: 'Wake up to a mountain sunrise' },
+        { emoji: '🍫', title: 'Chocolate Factory', desc: 'Tour a chocolate factory' },
+        { emoji: '🎤', title: 'Singing Lessons', desc: 'Learn to sing together' },
+        { emoji: '🏃', title: 'Fitness Class', desc: 'Exercise together' },
+        { emoji: '🌴', title: 'Island Hopping', desc: 'Visit multiple islands' },
+        { emoji: '🎓', title: 'Workshop', desc: 'Attend a workshop together' },
+        { emoji: '🍣', title: 'Japanese Dinner', desc: 'Authentic Japanese cuisine' },
+        { emoji: '🎨', title: 'Sculpture Class', desc: 'Create sculptures together' },
+        { emoji: '🌲', title: 'Camping Trip', desc: 'Camp under the stars' },
+        { emoji: '🎭', title: 'Opera Show', desc: 'Experience the beauty of opera' },
+        { emoji: '🏊', title: 'Water Park', desc: 'A fun day at the water park' },
+        { emoji: '🍰', title: 'Cupcake Decorating', desc: 'Decorate cupcakes together' },
+        { emoji: '🌹', title: 'Rose Picking', desc: 'Pick roses at a farm' },
+        { emoji: '🎸', title: 'Music Jam Session', desc: 'Play music together' },
+        { emoji: '🌟', title: 'Observatory Visit', desc: 'Observe the stars' },
+        { emoji: '🍽️', title: 'Fusion Cuisine', desc: 'Try fusion cooking' },
+        { emoji: '🎪', title: 'Acrobatics Show', desc: 'Watch amazing acrobatics' },
+        { emoji: '🌺', title: 'Orchid Garden', desc: 'Explore rare orchids' },
+        { emoji: '🎬', title: 'Movie Premiere', desc: 'Attend a movie premiere' },
+        { emoji: '🏖️', title: 'Beach Bonfire', desc: 'A bonfire on the beach' },
+        { emoji: '🎨', title: 'Glass Blowing', desc: 'Learn glass blowing art' },
+        { emoji: '🍷', title: 'Champagne Toast', desc: 'Celebrate with champagne' },
+        { emoji: '🌙', title: 'Midnight Picnic', desc: 'A late-night picnic' },
+        { emoji: '🎁', title: 'Designer Handbag', desc: 'A luxury handbag' },
+        { emoji: '🏰', title: 'Palace Tour', desc: 'Tour a royal palace' },
+        { emoji: '🌸', title: 'Cherry Blossom', desc: 'Enjoy cherry blossoms' },
+        { emoji: '🎵', title: 'Jazz Night', desc: 'An evening of jazz music' },
+        { emoji: '🍕', title: 'Gourmet Pizza', desc: 'Artisanal pizza experience' },
+        { emoji: '🌊', title: 'Whale Watching', desc: 'See whales in their habitat' },
+        { emoji: '🎯', title: 'Treasure Hunt', desc: 'A romantic treasure hunt' },
+        { emoji: '🧳', title: 'Train Journey', desc: 'A scenic train ride' },
+        { emoji: '🎪', title: 'Trapeze School', desc: 'Learn trapeze together' },
+        { emoji: '🌅', title: 'Desert Sunrise', desc: 'Watch sunrise in the desert' },
+        { emoji: '🍫', title: 'Truffle Tasting', desc: 'Taste gourmet truffles' },
+        { emoji: '🎤', title: 'Duet Performance', desc: 'Perform a duet together' }
     ];
 
-    function guessGame(choice) {
-        if (!gameState.gameActive) return;
+    let currentSurpriseIndex = 0;
 
-        gameState.attempts++;
-        gameState.streak = 0; // Reset streak on each guess
+    function initSurpriseSlider() {
+        const slider = document.getElementById('surpriseSlider');
+        const dotsContainer = document.getElementById('surpriseDots');
+        const prevBtn = document.getElementById('surprisePrevBtn');
+        const nextBtn = document.getElementById('surpriseNextBtn');
+        const counter = document.getElementById('surpriseCounter');
+        const total = document.getElementById('surpriseTotal');
+        const progressBar = document.getElementById('progressBar');
 
-        const resultDiv = document.getElementById('gameResult');
-        const resultMessage = document.getElementById('resultMessage');
-        const attemptCount = document.getElementById('attemptCount');
-        const streakCount = document.getElementById('streakCount');
+        // Set total
+        total.textContent = surprises.length;
 
-        // Get random wrong message
-        const randomMessage = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
-
-        // Show result
-        resultMessage.innerHTML = `
-            <div class="mb-4">
-                <p class="text-lg md:text-xl font-bold text-pink-600 mb-2">❌ Not quite!</p>
-                <p class="text-base md:text-lg text-purple-700">${randomMessage}</p>
-            </div>
-        `;
-
-        // Update counters
-        attemptCount.textContent = gameState.attempts;
-        streakCount.textContent = gameState.streak;
-
-        // Show result with animation
-        resultDiv.classList.remove('hidden');
-        resultDiv.classList.add('wrong-flash');
-
-        // Shake animation on the choice button
-        const buttons = document.querySelectorAll('.game-choice-btn');
-        buttons.forEach(btn => {
-            btn.classList.add('shake-animation');
-            setTimeout(() => btn.classList.remove('shake-animation'), 500);
+        // Create cards
+        surprises.forEach((surprise, index) => {
+            const card = document.createElement('div');
+            card.className = 'w-full h-full flex-shrink-0 flex items-center justify-center p-6 md:p-8 bg-gradient-to-br from-pink-50 to-purple-50';
+            card.innerHTML = `
+                <div class="text-center">
+                    <div class="text-6xl md:text-7xl mb-4 md:mb-6 animate-bounce-gentle">${surprise.emoji}</div>
+                    <h3 class="script-font text-2xl md:text-3xl lg:text-4xl font-bold text-pink-600 mb-3 md:mb-4">${surprise.title}</h3>
+                    <p class="text-base md:text-lg text-purple-700 max-w-xs mx-auto">${surprise.desc}</p>
+                </div>
+            `;
+            slider.appendChild(card);
         });
 
-        // Hide result after 3 seconds
-        setTimeout(() => {
-            resultDiv.classList.add('hidden');
-            resultDiv.classList.remove('wrong-flash');
-        }, 3000);
+        // Create dots
+        surprises.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = `w-2 md:w-3 h-2 md:h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-pink-500 w-6 md:w-8' : 'bg-gray-300 hover:bg-gray-400'}`;
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        prevBtn.onclick = () => goToSlide(currentSurpriseIndex - 1);
+        nextBtn.onclick = () => goToSlide(currentSurpriseIndex + 1);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') goToSlide(currentSurpriseIndex - 1);
+            if (e.key === 'ArrowRight') goToSlide(currentSurpriseIndex + 1);
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0;
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        slider.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX - touchEndX > 50) goToSlide(currentSurpriseIndex + 1);
+            if (touchEndX - touchStartX > 50) goToSlide(currentSurpriseIndex - 1);
+        });
+
+        function goToSlide(index) {
+            currentSurpriseIndex = (index + surprises.length) % surprises.length;
+            slider.style.transform = `translateX(-${currentSurpriseIndex * 100}%)`;
+            counter.textContent = currentSurpriseIndex + 1;
+            progressBar.style.width = `${((currentSurpriseIndex + 1) / surprises.length) * 100}%`;
+
+            // Update dots
+            document.querySelectorAll('#surpriseDots button').forEach((dot, i) => {
+                if (i === currentSurpriseIndex) {
+                    dot.className = 'w-6 md:w-8 h-2 md:h-3 rounded-full bg-pink-500 transition-all duration-300';
+                } else {
+                    dot.className = 'w-2 md:w-3 h-2 md:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300';
+                }
+            });
+        }
     }
 
-    function resetGame() {
-        gameState.attempts = 0;
-        gameState.streak = 0;
-        document.getElementById('attemptCount').textContent = '0';
-        document.getElementById('streakCount').textContent = '0';
-        document.getElementById('gameResult').classList.add('hidden');
+    // Initialize slider when page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSurpriseSlider);
+    } else {
+        initSurpriseSlider();
     }
 
     // ===== VIDEO GALLERY SLIDER =====
@@ -1726,6 +1777,17 @@
         '/images/VALDINE VIDEOS (6).mp4',
         '/images/VALDINE VIDEOS (7).mp4',
         '/images/VALDINE VIDEOS (9).mp4'
+    ];
+
+    const videoTitles = [
+        'Beautiful Moments',
+        'Our Journey',
+        'Love Story',
+        'Special Memories',
+        'Together Forever',
+        'Happy Times',
+        'Sweet Moments',
+        'Our Life'
     ];
 
     let currentVideoIndex = 0;
@@ -1749,7 +1811,7 @@
         // Create dots
         videos.forEach((_, index) => {
             const dot = document.createElement('button');
-            dot.className = `w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${index === 0 ? 'bg-gradient-to-r from-pink-500 to-red-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'}`;
+            dot.className = `w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 touch-target ${index === 0 ? 'bg-gradient-to-r from-pink-500 to-red-500 scale-125' : 'bg-gray-300 hover:bg-gray-400'}`;
             dot.onclick = () => goToVideo(index);
             videoDots.appendChild(dot);
         });
@@ -1757,13 +1819,13 @@
         // Create thumbnails
         videos.forEach((video, index) => {
             const thumb = document.createElement('button');
-            thumb.className = `relative w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${index === 0 ? 'border-pink-500 scale-105' : 'border-gray-300 hover:border-pink-300'}`;
+            thumb.className = `video-thumb-mobile relative rounded-lg overflow-hidden border-2 transition-all duration-300 touch-target ${index === 0 ? 'border-pink-500 scale-105' : 'border-gray-300 hover:border-pink-300'}`;
             thumb.innerHTML = `
                 <video class="w-full h-full object-contain" muted>
                     <source src="${video}" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-all">
-                    <i class="fa-solid fa-play text-white text-lg opacity-0 hover:opacity-100 transition-all"></i>
+                    <i class="fa-solid fa-play text-white text-sm md:text-lg opacity-0 hover:opacity-100 transition-all"></i>
                 </div>
             `;
             thumb.onclick = () => goToVideo(index);
@@ -1776,22 +1838,28 @@
             mainVideo.src = videos[index];
             mainVideo.play();
             videoCounter.textContent = index + 1;
+            
+            // Update video title
+            const videoTitle = document.getElementById('videoTitle');
+            if (videoTitle) {
+                videoTitle.textContent = videoTitles[index] || 'Our Love Story';
+            }
 
             // Update dots
             document.querySelectorAll('#videoDots button').forEach((dot, i) => {
                 if (i === index) {
-                    dot.className = 'w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 bg-gradient-to-r from-pink-500 to-red-500 scale-125';
+                    dot.className = 'w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 bg-gradient-to-r from-pink-500 to-red-500 scale-125';
                 } else {
-                    dot.className = 'w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
+                    dot.className = 'w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 bg-gray-300 hover:bg-gray-400';
                 }
             });
 
             // Update thumbnails
             document.querySelectorAll('#videoThumbnails button').forEach((thumb, i) => {
                 if (i === index) {
-                    thumb.className = 'relative w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 border-pink-500 scale-105';
+                    thumb.className = 'video-thumb-mobile relative rounded-lg overflow-hidden border-2 transition-all duration-300 touch-target border-pink-500 scale-105';
                 } else {
-                    thumb.className = 'relative w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 border-gray-300 hover:border-pink-300';
+                    thumb.className = 'video-thumb-mobile relative rounded-lg overflow-hidden border-2 transition-all duration-300 touch-target border-gray-300 hover:border-pink-300';
                 }
             });
         }
@@ -1817,6 +1885,32 @@
                 goToVideo(newIndex);
             }
         });
+
+        // Mobile touch/swipe support for video gallery
+        let videoTouchStartX = 0;
+        let videoTouchEndX = 0;
+
+        mainVideo.addEventListener('touchstart', (e) => {
+            videoTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        mainVideo.addEventListener('touchend', (e) => {
+            videoTouchEndX = e.changedTouches[0].screenX;
+            handleVideoSwipe();
+        }, { passive: true });
+
+        function handleVideoSwipe() {
+            const swipeThreshold = 50;
+            if (videoTouchStartX - videoTouchEndX > swipeThreshold) {
+                // Swipe left - next video
+                const newIndex = (currentVideoIndex + 1) % videos.length;
+                goToVideo(newIndex);
+            } else if (videoTouchEndX - videoTouchStartX > swipeThreshold) {
+                // Swipe right - previous video
+                const newIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+                goToVideo(newIndex);
+            }
+        }
     }
 
     // Initialize on page load
