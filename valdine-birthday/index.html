@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar { display: none;}
+        .confetti {
+            animation: confetti 3s ease-in-out infinite;
+        }
+        @keyframes confetti {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .bounce-gentle {
+            animation: bounce-gentle 2s ease-in-out infinite;
+        }
+        @keyframes bounce-gentle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .sparkle {
+            animation: sparkle 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-5px) rotate(-2deg); }
+        }
+        .wiggle {
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+        .pulse-heart {
+            animation: pulse-heart 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-heart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .slide-in-left {
+            animation: slide-in-left 0.8s ease-out forwards;
+        }
+        @keyframes slide-in-left {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .slide-in-right {
+            animation: slide-in-right 0.8s ease-out forwards;
+        }
+        @keyframes slide-in-right {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+        @keyframes fade-in-up {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        .script-font {
+            font-family: 'Caveat', cursive;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 25% 25%, #ffeaa7 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, #fd79a8 0%, transparent 50%),
+                              radial-gradient(circle at 50% 50%, #fdcb6e 0%, transparent 50%);
+        }
+        /* Image Slider Styles */
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1.5rem;
+        }
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(236, 72, 153, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(236, 72, 153, 0.5);
+        }
+        .slider-dot.active {
+            background-color: #ec4899;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
+        }
+        .slider-dot:hover {
+            background-color: rgba(236, 72, 153, 0.6);
+            transform: scale(1.2);
+        }
+        .thumbnail-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumbnail-item:hover {
+            transform: scale(1.1);
+            border-color: #ec4899;
+        }
+        .thumbnail-item.active {
+            border-color: #ec4899;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+            transform: scale(1.15);
+        }
+        @media (max-width: 768px) {
+            .thumbnail-item {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-50 to-yellow-100 min-h-screen overflow-x-hidden">
+
+<!-- Floating Confetti Elements -->
+<div class="fixed inset-0 pointer-events-none z-50">
+    <div class="confetti absolute top-0 left-1/4 text-pink-400 text-2xl" style="animation-delay: 0s;"><i class="fa-solid fa-heart"></i></div>
+    <div class="confetti absolute top-0 left-1/2 text-yellow-400 text-xl" style="animation-delay: 0.5s;"><i class="fa-solid fa-star"></i></div>
+    <div class="confetti absolute top-0 left-3/4 text-purple-400 text-2xl" style="animation-delay: 1s;"><i class="fa-solid fa-gift"></i></div>
+    <div class="confetti absolute top-0 left-1/6 text-blue-400 text-xl" style="animation-delay: 1.5s;"><i class="fa-solid fa-balloon"></i></div>
+    <div class="confetti absolute top-0 left-5/6 text-pink-500 text-2xl" style="animation-delay: 2s;"><i class="fa-solid fa-cake-candles"></i></div>
+</div>
+
+<!-- Header Navigation -->
+<header id="header" class="relative z-40 bg-white/80 backdrop-blur-md shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
+        <nav class="flex items-center justify-between">
+            <div class="flex items-center space-x-2 md:space-x-3">
+                <div class="w-10 md:w-12 h-10 md:h-12 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center bounce-gentle">
+                    <i class="fa-solid fa-heart text-white text-lg md:text-xl pulse-heart"></i>
+                </div>
+                <h1 class="script-font text-2xl md:text-3xl font-bold gradient-text">Birthday Love</h1>
+            </div>
+            <ul class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <li><a href="#hero" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Home</a></li>
+                <li><a href="#memories" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Memories</a></li>
+                <li><a href="#timeline" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Timeline</a></li>
+                <li><a href="#wishes" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Wishes</a></li>
+                <li><a href="#gallery" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Gallery</a></li>
+                <li><a href="#surprise" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Surprise</a></li>
+            </ul>
+            <div class="flex items-center space-x-2 md:space-x-4">
+                <button class="bg-gradient-to-r from-pink-400 to-purple-500 text-white px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-semibold hover:from-pink-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-gift mr-1 md:mr-2"></i><span class="hidden sm:inline">Open Card</span><span class="sm:hidden">Card</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="relative min-h-screen md:min-h-[800px] flex items-center justify-center bg-gradient-to-br from-pink-200 via-purple-100 to-yellow-200 overflow-hidden py-12 md:py-0">
+    <!-- Background Decorative Elements -->
+    <div class="absolute inset-0 hidden md:block">
+        <div class="absolute top-20 left-10 text-pink-300 text-4xl float"><i class="fa-solid fa-heart"></i></div>
+        <div class="absolute top-32 right-16 text-yellow-300 text-3xl sparkle"><i class="fa-solid fa-star"></i></div>
+        <div class="absolute bottom-40 left-20 text-purple-300 text-5xl wiggle"><i class="fa-solid fa-cake-candles"></i></div>
+        <div class="absolute bottom-20 right-24 text-blue-300 text-4xl bounce-gentle"><i class="fa-solid fa-balloon"></i></div>
+        <div class="absolute top-1/2 left-8 text-pink-400 text-2xl sparkle"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="absolute top-1/4 right-8 text-purple-400 text-3xl float"><i class="fa-solid fa-gift"></i></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 text-center">
+        <div class="mb-6 md:mb-8 fade-in-up">
+            <h1 class="script-font text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold gradient-text mb-2 md:mb-4 leading-tight">
+                Happy Birthday
+            </h1>
+            <h2 class="script-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-pink-600 mb-4 md:mb-6">
+                My Love ❤️
+            </h2>
+        </div>
+
+        <div class="mb-8 md:mb-12 slide-in-left">
+            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-purple-800 font-medium mb-3 md:mb-4 leading-relaxed px-4">
+                My Dearest Valdine, Happy Birthday
+            </p>
+            <p class="text-base sm:text-lg md:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                Right now, at the stroke of midnight, I'm sending you all the love my heart can hold.
+                You are not just my wife; you are my BEST FRIEND, MY SOULMATE, MY EVERYTHING. 💕
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 slide-in-right px-4">
+            <button class="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-base md:text-xl font-bold shadow-2xl hover:from-pink-600 hover:to-purple-700 transform hover:scale-110 transition-all duration-300">
+                <i class="fa-solid fa-heart mr-2 md:mr-3"></i>Start the Celebration
+            </button>
+            <button class="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-base md:text-xl font-bold shadow-2xl hover:from-yellow-500 hover:to-orange-600 transform hover:scale-110 transition-all duration-300">
+                <i class="fa-solid fa-surprise mr-2 md:mr-3"></i>Open Surprise
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Birthday Elements - Hidden on mobile -->
+    <div class="hidden md:flex absolute top-1/4 left-1/4 w-24 h-24 bg-pink-300 rounded-full items-center justify-center bounce-gentle">
+        <i class="fa-solid fa-birthday-cake text-white text-3xl"></i>
+    </div>
+    <div class="hidden md:flex absolute bottom-1/4 right-1/4 w-20 h-20 bg-purple-400 rounded-full items-center justify-center float">
+        <i class="fa-solid fa-gifts text-white text-2xl"></i>
+    </div>
+</section>
+
+<!-- Memories Section -->
+<section id="memories" class="py-16 md:py-24 bg-gradient-to-r from-pink-50 to-purple-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Our Beautiful Memories</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                Every memory we've created together is a treasure. Here are some of my favorite moments that make my heart smile.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl card-hover border-4 border-pink-200">
+                <div class="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <i class="fa-solid fa-heart text-white text-xl md:text-2xl pulse-heart"></i>
+                </div>
+                <h3 class="script-font text-2xl md:text-3xl font-bold text-pink-600 mb-3 md:mb-4 text-center">Our Connection Begins</h3>
+                <p class="text-purple-700 text-center text-sm md:text-base leading-relaxed mb-4">
+                    June 2023 - When we first started talking, separated by thousands of miles. We built a bond across continents through calls and video,
+                    proving that distance means nothing when the foundation is real. 💕
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-3 md:px-4 py-2 bg-pink-100 rounded-full text-pink-700 font-semibold text-xs md:text-sm">
+                        <i class="fa-solid fa-globe mr-1 md:mr-2"></i>Distance Conquered
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl card-hover border-4 border-purple-200">
+                <div class="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <i class="fa-solid fa-plane text-white text-xl md:text-2xl wiggle"></i>
+                </div>
+                <h3 class="script-font text-2xl md:text-3xl font-bold text-purple-600 mb-3 md:mb-4 text-center">First Meeting</h3>
+                <p class="text-purple-700 text-center text-sm md:text-base leading-relaxed mb-4">
+                    September 16th - Flying all that way just to finally meet you and begin the traditional steps.
+                    That trip was monumental, proving our commitment was real. 💜
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-3 md:px-4 py-2 bg-purple-100 rounded-full text-purple-700 font-semibold text-xs md:text-sm">
+                        <i class="fa-solid fa-heart-handshake mr-1 md:mr-2"></i>Finally Together
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl card-hover border-4 border-yellow-200">
+                <div class="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <i class="fa-solid fa-ring text-white text-xl md:text-2xl float"></i>
+                </div>
+                <h3 class="script-font text-2xl md:text-3xl font-bold text-yellow-600 mb-3 md:mb-4 text-center">Our Wedding Day</h3>
+                <p class="text-purple-700 text-center text-sm md:text-base leading-relaxed mb-4">
+                    January 20, 2024 - We said "I do" and made it official. A monumental step of commitment,
+                    proving that our love was worth every challenge we overcame. 💛
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-3 md:px-4 py-2 bg-yellow-100 rounded-full text-yellow-700 font-semibold text-xs md:text-sm">
+                        <i class="fa-solid fa-heart-pulse mr-1 md:mr-2"></i>Forever Bound
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl card-hover border-4 border-green-200">
+                <div class="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <i class="fa-solid fa-leaf text-white text-xl md:text-2xl bounce-gentle"></i>
+                </div>
+                <h3 class="script-font text-2xl md:text-3xl font-bold text-green-600 mb-3 md:mb-4 text-center">Building Our Life in Canada</h3>
+                <p class="text-purple-700 text-center text-sm md:text-base leading-relaxed mb-4">
+                    We achieved the goal we worked toward for so long. Now we are here, building our life together in Canada.
+                    Waking up next to you is the reward for every challenge we overcame. 🍁
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-3 md:px-4 py-2 bg-green-100 rounded-full text-green-700 font-semibold text-xs md:text-sm">
+                        <i class="fa-solid fa-home mr-1 md:mr-2"></i>Our Dream Home
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl card-hover border-4 border-blue-200">
+                <div class="w-14 md:w-16 h-14 md:h-16 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto">
+                    <i class="fa-solid fa-crown text-white text-xl md:text-2xl sparkle"></i>
+                </div>
+                <h3 class="script-font text-2xl md:text-3xl font-bold text-blue-600 mb-3 md:mb-4 text-center">You Are My Everything</h3>
+                <p class="text-purple-700 text-center text-sm md:text-base leading-relaxed mb-4">
+                    You are the reason I am at peace. You brought peace, commitment, safety, and trust into my world.
+                    You are my BEST FRIEND, MY SOULMATE, MY EVERYTHING. 👑
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-3 md:px-4 py-2 bg-blue-100 rounded-full text-blue-700 font-semibold text-xs md:text-sm">
+                        <i class="fa-solid fa-heart mr-1 md:mr-2"></i>My Queen
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl card-hover border-4 border-rose-200">
+                <div class="w-16 h-16 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full flex items-center justify-center mb-6 mx-auto">
+                    <i class="fa-solid fa-baby text-white text-2xl pulse-heart"></i>
+                </div>
+                <h3 class="script-font text-3xl font-bold text-rose-600 mb-4 text-center">Our Beautiful Family</h3>
+                <p class="text-purple-700 text-center leading-relaxed mb-4">
+                    The amazing mother to our son, the incredible wife, and the resilient, beautiful woman who never stopped believing in us.
+                    Today is about celebrating you. 💕
+                </p>
+                <div class="text-center">
+                    <span class="inline-flex items-center px-4 py-2 bg-rose-100 rounded-full text-rose-700 font-semibold">
+                        <i class="fa-solid fa-heart-circle-plus mr-2"></i>Our Greatest Gift
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section id="timeline" class="py-16 md:py-24 bg-gradient-to-br from-purple-100 to-pink-100">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Our Love Timeline</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                A journey through the beautiful chapters of our love story, each moment more precious than the last.
+            </p>
+        </div>
+
+        <div class="relative">
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-pink-400 to-purple-400 h-full"></div>
+
+            <div class="space-y-8 md:space-y-16">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-start">
+                    <div class="md:w-1/2 md:pr-8 md:text-right slide-in-left mb-4 md:mb-0">
+                        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-4 border-pink-200">
+                            <h3 class="script-font text-2xl md:text-3xl font-bold text-pink-600 mb-2 md:mb-3">June 2023</h3>
+                            <p class="text-purple-700 text-sm md:text-base mb-3 md:mb-4">When we first started talking, separated by thousands of miles. We built a bond across continents through calls and video, proving that distance means nothing when the foundation is real.</p>
+                            <span class="text-xs md:text-sm text-pink-500 font-semibold">💕 Distance Conquered</span>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex w-16 h-16 bg-gradient-to-r from-pink-400 to-red-400 rounded-full items-center justify-center relative z-10 bounce-gentle flex-shrink-0">
+                        <i class="fa-solid fa-heart text-white text-xl"></i>
+                    </div>
+                    <div class="hidden md:block md:w-1/2 md:pl-8"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-end">
+                    <div class="hidden md:block md:w-1/2 md:pr-8"></div>
+                    <div class="hidden md:flex w-16 h-16 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full items-center justify-center relative z-10 wiggle flex-shrink-0">
+                        <i class="fa-solid fa-calendar-days text-white text-xl"></i>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8 slide-in-right">
+                        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-4 border-purple-200">
+                            <h3 class="script-font text-2xl md:text-3xl font-bold text-purple-600 mb-2 md:mb-3">September 16, 2023</h3>
+                            <p class="text-purple-700 text-sm md:text-base mb-3 md:mb-4">Flying all that way just to finally meet you and begin the traditional steps. That trip was monumental, proving our commitment was real and our love was worth every challenge.</p>
+                            <span class="text-xs md:text-sm text-purple-500 font-semibold">💜 Finally Together</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-start">
+                    <div class="md:w-1/2 md:pr-8 md:text-right slide-in-left mb-4 md:mb-0">
+                        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-4 border-yellow-200">
+                            <h3 class="script-font text-2xl md:text-3xl font-bold text-yellow-600 mb-2 md:mb-3">January 20, 2024</h3>
+                            <p class="text-purple-700 text-sm md:text-base mb-3 md:mb-4">We said "I do" and made it official. A monumental step of commitment, proving that our love was worth every unreliable internet connection and power outage we endured.</p>
+                            <span class="text-xs md:text-sm text-yellow-500 font-semibold">✈️ Our Wedding Day</span>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full items-center justify-center relative z-10 float flex-shrink-0">
+                        <i class="fa-solid fa-plane text-white text-xl"></i>
+                    </div>
+                    <div class="hidden md:block md:w-1/2 md:pl-8"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-end">
+                    <div class="hidden md:block md:w-1/2 md:pr-8"></div>
+                    <div class="hidden md:flex w-16 h-16 bg-gradient-to-r from-green-400 to-teal-400 rounded-full items-center justify-center relative z-10 sparkle flex-shrink-0">
+                        <i class="fa-solid fa-home text-white text-xl"></i>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8 slide-in-right">
+                        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-4 border-green-200">
+                            <h3 class="script-font text-2xl md:text-3xl font-bold text-green-600 mb-2 md:mb-3">Now in Canada</h3>
+                            <p class="text-purple-700 text-sm md:text-base mb-3 md:mb-4">We achieved the goal we worked toward for so long. Building our life together in Canada, waking up next to you is the reward for every challenge we overcame.</p>
+                            <span class="text-xs md:text-sm text-green-500 font-semibold">🏠 Our Dream Home</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-start">
+                    <div class="md:w-1/2 md:pr-8 md:text-right slide-in-left mb-4 md:mb-0">
+                        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-4 border-rose-200">
+                            <h3 class="script-font text-2xl md:text-3xl font-bold text-rose-600 mb-2 md:mb-3">Today & Forever</h3>
+                            <p class="text-purple-700 text-sm md:text-base mb-3 md:mb-4">Celebrating another year of you, the most amazing mother, incredible wife, and resilient woman who never stopped believing in us. Looking forward to all the beautiful tomorrows we'll share together.</p>
+                            <span class="text-xs md:text-sm text-rose-500 font-semibold">🌟 Forever and Always</span>
+                        </div>
+                    </div>
+                    <div class="w-16 h-16 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full flex items-center justify-center relative z-10 pulse-heart">
+                        <i class="fa-solid fa-infinity text-white text-xl"></i>
+                    </div>
+                    <div class="w-1/2 pl-8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Wishes Section -->
+<section id="wishes" class="py-16 md:py-24 bg-gradient-to-r from-yellow-100 to-pink-100">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Birthday Wishes</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                All my hopes, dreams, and wishes for you on this special day and for the year ahead.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-pink-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto bounce-gentle">
+                    <i class="fa-solid fa-heart text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-pink-600 mb-3 md:mb-4">Endless Love</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    May our love continue to grow stronger with each passing day, filling your heart with joy and warmth.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-yellow-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto sparkle">
+                    <i class="fa-solid fa-sun text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-yellow-600 mb-3 md:mb-4">Bright Days</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    I wish for sunshine in your smile, laughter in your heart, and brightness in every day ahead.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-purple-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto wiggle">
+                    <i class="fa-solid fa-star text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-purple-600 mb-3 md:mb-4">Dreams Come True</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    May all your dreams take flight and every wish you make find its way to reality this year.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-green-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto float">
+                    <i class="fa-solid fa-leaf text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-green-600 mb-3 md:mb-4">Growth & Joy</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    Wishing you continuous growth, abundant happiness, and moments of pure joy in everything you do.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-blue-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto pulse-heart">
+                    <i class="fa-solid fa-dove text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-blue-600 mb-3 md:mb-4">Peace & Serenity</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    May you find peace in quiet moments and serenity in the beautiful chaos of life we share.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-rose-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto bounce-gentle">
+                    <i class="fa-solid fa-gift text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-rose-600 mb-3 md:mb-4">Beautiful Surprises</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    I wish for delightful surprises, unexpected joys, and magical moments that take your breath away.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-indigo-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto sparkle">
+                    <i class="fa-solid fa-rainbow text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-indigo-600 mb-3 md:mb-4">Colorful Adventures</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    May your year be painted with vibrant experiences, colorful memories, and exciting adventures.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-xl card-hover border-4 border-amber-200 text-center">
+                <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto wiggle">
+                    <i class="fa-solid fa-crown text-white text-2xl md:text-3xl"></i>
+                </div>
+                <h3 class="script-font text-xl md:text-2xl font-bold text-amber-600 mb-3 md:mb-4">Queen of My Heart</h3>
+                <p class="text-purple-700 text-xs md:text-sm leading-relaxed">
+                    You deserve to be celebrated every day like the queen you are. Today is just the beginning!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Your Gallery Section - Image Slider -->
+<section id="gallery" class="py-16 md:py-24 bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Your Gallery</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                A beautiful collection of precious moments, each one a memory of love and togetherness.
+            </p>
+        </div>
+
+        <!-- Slider Container -->
+        <div class="relative w-full max-w-4xl mx-auto">
+            <!-- Main Slider -->
+            <div class="relative bg-gradient-to-br from-pink-200 via-purple-200 to-rose-200 rounded-3xl md:rounded-4xl overflow-hidden shadow-2xl">
+                <!-- Slider Wrapper -->
+                <div class="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+                    <!-- Slider Track -->
+                    <div id="sliderTrack" class="flex transition-transform duration-700 ease-out h-full">
+                        <!-- Slides will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Decorative Hearts Overlay -->
+                <div class="absolute top-4 right-4 md:top-6 md:right-6 text-pink-400 opacity-60 text-3xl md:text-4xl animate-pulse">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6 text-rose-400 opacity-60 text-2xl md:text-3xl animate-pulse" style="animation-delay: 0.5s;">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button id="prevBtn" class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 text-pink-600 hover:text-pink-700 rounded-full p-2 md:p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <i class="fa-solid fa-chevron-left text-lg md:text-2xl"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 hover:bg-opacity-100 text-pink-600 hover:text-pink-700 rounded-full p-2 md:p-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <i class="fa-solid fa-chevron-right text-lg md:text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Dots Navigation -->
+            <div id="dotsContainer" class="flex justify-center gap-2 md:gap-3 mt-6 md:mt-8 flex-wrap">
+                <!-- Dots will be generated by JavaScript -->
+            </div>
+
+            <!-- Image Counter -->
+            <div class="text-center mt-4 md:mt-6">
+                <p class="text-purple-700 font-semibold text-sm md:text-base">
+                    <span id="currentImage">1</span> / <span id="totalImages">0</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Thumbnail Preview (Mobile-friendly) -->
+        <div class="mt-10 md:mt-12">
+            <p class="text-center text-purple-600 font-semibold text-sm md:text-base mb-4">Swipe or click arrows to explore</p>
+            <div id="thumbnailContainer" class="flex gap-2 md:gap-3 overflow-x-auto pb-2 justify-center flex-wrap">
+                <!-- Thumbnails will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Birthday Card Section -->
+<section id="surprise" class="py-16 md:py-24 bg-gradient-to-br from-purple-200 to-pink-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Special Birthday Surprise</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                Click on the elements below to reveal special messages just for you, my love!
+            </p>
+        </div>
+
+        <div class="relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-4 md:border-8 border-pink-300 mx-auto max-w-4xl">
+            <!-- Interactive Birthday Card -->
+            <div class="text-center mb-6 md:mb-8">
+                <h3 class="script-font text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4 md:mb-6">Happy Birthday Beautiful!</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
+                <div class="text-center cursor-pointer interactive-element" onclick="showMessage('heart')">
+                    <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 bounce-gentle hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart text-white text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-sm md:text-base">Love</p>
+                </div>
+
+                <div class="text-center cursor-pointer interactive-element" onclick="showMessage('cake')">
+                    <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 wiggle hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-birthday-cake text-white text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-sm md:text-base">Celebration</p>
+                </div>
+
+                <div class="text-center cursor-pointer interactive-element" onclick="showMessage('gift')">
+                    <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 float hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gift text-white text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-sm md:text-base">Surprise</p>
+                </div>
+
+                <div class="text-center cursor-pointer interactive-element" onclick="showMessage('star')">
+                    <div class="w-16 md:w-20 h-16 md:h-20 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 sparkle hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-star text-white text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-sm md:text-base">Dreams</p>
+                </div>
+            </div>
+
+            <!-- Message Display Area -->
+            <div id="message-display" class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl md:rounded-2xl p-6 md:p-8 min-h-[150px] md:min-h-[200px] flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fa-solid fa-hand-point-up text-3xl md:text-4xl text-purple-400 mb-3 md:mb-4 bounce-gentle"></i>
+                    <p class="text-base md:text-lg lg:text-xl text-purple-700 font-semibold">Click on any icon above to reveal a special message!</p>
+                    <p class="text-sm md:text-base text-purple-600 mt-2">Each one holds a piece of my heart for you 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Love Letters Section -->
+<section id="love-letters" class="py-16 md:py-24 bg-gradient-to-r from-yellow-50 to-pink-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Love Letters</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                Words from my heart to yours, expressing all the love I carry for you every single day.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-xl card-hover border-4 border-pink-200">
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="w-10 md:w-12 h-10 md:h-12 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-envelope-heart text-white text-sm md:text-base"></i>
+                    </div>
+                    <h3 class="script-font text-2xl md:text-3xl font-bold text-pink-600">My Dearest Valdine</h3>
+                </div>
+                <div class="space-y-3 md:space-y-4 text-purple-700 leading-relaxed text-sm md:text-base">
+                    <p>Happy Birthday. Right now, at the stroke of midnight, I'm sending you all the love my heart can hold. I needed this message to be long, not because I have so much to say (though I do), but because I want you to know I took the time to write something worthy of you.</p>
+                    <p>Do you remember back in June 2023 when we first started talking? We were separated by thousands of miles, yet I felt a connection deeper than any I had ever known. We had to rely on calls and video, building a bond across continents.</p>
+                    <p>You are the reason I am at peace. You are the woman who brought peace, commitment, safety, and trust into my world. Your love completely shattered the initial impression I had, proving me wrong in the most beautiful way.</p>
+                    <div class="text-right mt-4 md:mt-6">
+                        <p class="script-font text-lg md:text-xl text-pink-600">Forever and always ❤️</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-xl card-hover border-4 border-purple-200">
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="w-10 md:w-12 h-10 md:h-12 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center mr-3 md:mr-4 flex-shrink-0">
+                        <i class="fa-solid fa-heart-pulse text-white text-sm md:text-base"></i>
+                    </div>
+                    <h3 class="script-font text-2xl md:text-3xl font-bold text-purple-600">My Everything</h3>
+                </div>
+                <div class="space-y-3 md:space-y-4 text-purple-700 leading-relaxed text-sm md:text-base">
+                    <p>You did the best thing in your life when you gave me your heart. And giving you my heart was the best thing I ever did. You are not just my wife; you are my BEST FRIEND, MY SOULMATE, MY EVERYTHING.</p>
+                    <p>Today is about celebrating you. The amazing mother to our son, the incredible wife, and the resilient, beautiful woman who never stopped believing in us. I love you more fiercely and more gratefully than I can ever express in this message.</p>
+                    <p>I can't wait to shower you with celebration today. Get ready to shine! You deserve to be celebrated every day like the queen you are.</p>
+                    <div class="text-right mt-4 md:mt-6">
+                        <p class="script-font text-lg md:text-xl text-purple-600">Forever and always 💜</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Birthday Countdown Section -->
+<section id="countdown" class="py-16 md:py-24 bg-gradient-to-br from-pink-200 to-purple-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">Celebrating You Today!</h2>
+            <p class="text-base md:text-lg lg:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed px-4">
+                Every second, every minute, every hour - today is all about celebrating the incredible person you are!
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl border-4 md:border-8 border-pink-300">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
+                <div class="text-center">
+                    <div class="w-16 md:w-24 h-16 md:h-24 bg-gradient-to-r from-pink-400 to-red-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 bounce-gentle">
+                        <span class="text-white text-lg md:text-2xl font-bold" id="hours">24</span>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-xs md:text-lg">Hours of Joy</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 md:w-24 h-16 md:h-24 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 sparkle">
+                        <span class="text-white text-lg md:text-2xl font-bold" id="minutes">60</span>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-xs md:text-lg">Minutes of Smiles</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 md:w-24 h-16 md:h-24 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 wiggle">
+                        <span class="text-white text-lg md:text-2xl font-bold" id="seconds">60</span>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-xs md:text-lg">Seconds of Love</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 md:w-24 h-16 md:h-24 bg-gradient-to-r from-green-400 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 float">
+                        <span class="text-white text-lg md:text-2xl font-bold">∞</span>
+                    </div>
+                    <p class="text-purple-700 font-semibold text-xs md:text-lg">Endless Wishes</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h3 class="script-font text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-3 md:mb-4">🎉 It's Your Special Day! 🎉</h3>
+                <p class="text-base md:text-lg lg:text-xl text-purple-700 mb-6 md:mb-8">Today and every day, you deserve all the happiness in the world!</p>
+                <button class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-base md:text-xl font-bold shadow-xl hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-party-horn mr-2 md:mr-3"></i>Let's Celebrate!
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final Message Section -->
+<section id="final-message" class="py-16 md:py-24 bg-gradient-to-r from-purple-100 to-pink-100">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+        <div class="bg-white rounded-2xl md:rounded-3xl p-8 md:p-16 shadow-2xl border-4 md:border-8 border-gradient-to-r from-pink-300 to-purple-300">
+            <div class="mb-6 md:mb-8">
+                <div class="w-16 md:w-24 h-16 md:h-24 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 pulse-heart">
+                    <i class="fa-solid fa-heart text-white text-2xl md:text-4xl"></i>
+                </div>
+                <h2 class="script-font text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4 md:mb-6">Happy Birthday, My Everything</h2>
+            </div>
+
+            <div class="space-y-4 md:space-y-6 text-base md:text-lg text-purple-700 leading-relaxed mb-8 md:mb-12">
+                <p>As I look over at you sleeping peacefully here in our home in Canada, I'm reminded of the incredible journey that brought us here. We overcame unreliable internet, power outages, and the rush to return to Canada - it only made the idea of our life together burn brighter.</p>
+
+                <p>You showed me a depth of love, kindness, and strength I never imagined. That self-awareness you have, that maturity—it's a quality I admire very much. Now, we are here. We achieved the goal we worked toward for so long: building our life together in Canada.</p>
+
+                <p>Waking up next to you is the reward for every challenge we overcame. Today is about celebrating you. The amazing mother to our son, the incredible wife, and the resilient, beautiful woman who never stopped believing in us.</p>
+
+                <p class="script-font text-xl md:text-2xl text-pink-600 font-bold">I love you more fiercely and more gratefully than I can ever express. Get ready to shine! 💕</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6">
+                <button class="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold shadow-xl hover:from-pink-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-heart mr-2 md:mr-3"></i>I Love You
+                </button>
+                <button class="w-full sm:w-auto bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold shadow-xl hover:from-purple-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-birthday-cake mr-2 md:mr-3"></i>Make a Wish
+                </button>
+                <button class="w-full sm:w-auto bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold shadow-xl hover:from-yellow-500 hover:to-orange-600 transform hover:scale-105 transition-all duration-300">
+                    <i class="fa-solid fa-sparkles mr-2 md:mr-3"></i>Celebrate
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-gradient-to-r from-purple-800 to-pink-800 text-white py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 text-center">
+        <div class="mb-6 md:mb-8">
+            <div class="w-12 md:w-16 h-12 md:h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                <i class="fa-solid fa-heart text-pink-500 text-lg md:text-2xl pulse-heart"></i>
+            </div>
+            <h3 class="script-font text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Made with Endless Love</h3>
+            <p class="text-base md:text-lg lg:text-xl text-pink-100 max-w-2xl mx-auto leading-relaxed px-4">
+                Every pixel, every word, every animation on this page was crafted with love, just for you.
+                Happy Birthday, my beautiful wife! 💕
+            </p>
+        </div>
+
+        <div class="border-t border-pink-200 pt-6 md:pt-8">
+            <p class="text-sm md:text-base text-pink-200">
+                © 2024 • Created with 💖 for the most amazing woman in the world • Today and Always
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Interactive message display
+    function showMessage(type) {
+        const messageDisplay = document.getElementById('message-display');
+        let message = '';
+        
+        switch(type) {
+            case 'heart':
+                message = `
+                    <div class="text-center">
+                        <i class="fa-solid fa-heart text-5xl text-pink-500 mb-4 pulse-heart"></i>
+                        <h4 class="script-font text-3xl font-bold text-pink-600 mb-4">My Heart Belongs to You</h4>
+                        <p class="text-lg text-purple-700">You are the love of my life, my soulmate, my everything. Every beat of my heart whispers your name, and every breath I take is filled with love for you. You complete me in ways I never knew were possible.</p>
+                    </div>
+                `;
+                break;
+            case 'cake':
+                message = `
+                    <div class="text-center">
+                        <i class="fa-solid fa-birthday-cake text-5xl text-yellow-500 mb-4 bounce-gentle"></i>
+                        <h4 class="script-font text-3xl font-bold text-yellow-600 mb-4">Sweet Celebrations</h4>
+                        <p class="text-lg text-purple-700">Today we celebrate you - the sweetest person I know! Just like the candles on your cake, you bring light and warmth to everyone around you. May this new year be filled with all your favorite flavors of happiness!</p>
+                    </div>
+                `;
+                break;
+            case 'gift':
+                message = `
+                    <div class="text-center">
+                        <i class="fa-solid fa-gift text-5xl text-purple-500 mb-4 wiggle"></i>
+                        <h4 class="script-font text-3xl font-bold text-purple-600 mb-4">You Are My Greatest Gift</h4>
+                        <p class="text-lg text-purple-700">Every day with you feels like unwrapping a beautiful present. Your love, your laughter, your presence in my life - these are the greatest gifts I could ever receive. You've given me a lifetime of happiness!</p>
+                    </div>
+                `;
+                break;
+            case 'star':
+                message = `
+                    <div class="text-center">
+                        <i class="fa-solid fa-star text-5xl text-green-500 mb-4 sparkle"></i>
+                        <h4 class="script-font text-3xl font-bold text-green-600 mb-4">Reach for the Stars</h4>
+                        <p class="text-lg text-purple-700">You shine brighter than all the stars in the sky! This year, may all your dreams take flight and every wish you make come true. You deserve a universe full of happiness, and I'll be right here cheering you on!</p>
+                    </div>
+                `;
+                break;
+        }
+        
+        messageDisplay.innerHTML = message;
+        messageDisplay.classList.add('fade-in-up');
+        
+        // Add confetti effect
+        createConfetti();
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+        const colors = ['#ff6b9d', '#c44569', '#f8b500', '#ff9ff3', '#a8e6cf', '#7b68ee'];
+        const confettiContainer = document.querySelector('.fixed.inset-0.pointer-events-none.z-50');
+        
+        for(let i = 0; i < 20; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti absolute text-2xl';
+            confetti.innerHTML = ['❤️', '🎉', '⭐', '🎂', '🎈', '💕'][Math.floor(Math.random() * 6)];
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            confettiContainer.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                if(confetti.parentNode) {
+                    confetti.parentNode.removeChild(confetti);
+                }
+            }, 3000);
+        }
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections for scroll animations
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Auto-create confetti every few seconds
+    setInterval(createConfetti, 5000);
+
+    // ===== IMAGE SLIDER FUNCTIONALITY =====
+    const imageFolder = '/images/';
+    const imageNames = [
+        'Valdine (1).jpg', 'Valdine (2).jpg', 'Valdine (3).jpg', 'Valdine (4).jpg', 'Valdine (5).jpg', 'Valdine (6).jpg',
+        'Valdine (7).jpg', 'Valdine (8).jpg', 'Valdine (9).jpg', 'Valdine (10).jpg', 'Valdine (11).jpg', 'Valdine (12).jpg',
+        'Valdine (13).jpg', 'Valdine (14).jpg', 'Valdine (15).jpg', 'Valdine (16).jpg', 'Valdine (17).jpg', 'Valdine (18).jpg',
+        'Valdine (19).jpg', 'Valdine (20).jpg', 'Valdine (21).jpg', 'Valdine (22).jpg', 'Valdine (23).jpg', 'Valdine (24).jpg',
+        'Valdine (25).jpg', 'Valdine (26).jpg', 'Valdine (27).jpg', 'Valdine (28).jpg', 'Valdine (29).jpg', 'Valdine (30).jpg',
+        'Valdine (31).jpg', 'Valdine (32).jpg', 'Valdine (33).jpg', 'Valdine (34).jpg', 'Valdine (35).jpg', 'Valdine (36).jpg'
+    ];
+
+    let currentSlide = 0;
+    const sliderTrack = document.getElementById('sliderTrack');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const thumbnailContainer = document.getElementById('thumbnailContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const currentImageSpan = document.getElementById('currentImage');
+    const totalImagesSpan = document.getElementById('totalImages');
+
+    // Initialize slider
+    function initSlider() {
+        totalImagesSpan.textContent = imageNames.length;
+
+        // Create slides
+        imageNames.forEach((imageName, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'slider-slide';
+            const img = document.createElement('img');
+            img.src = imageFolder + imageName;
+            img.alt = `Memory ${index + 1}`;
+            slide.appendChild(img);
+            sliderTrack.appendChild(slide);
+        });
+
+        // Create dots
+        imageNames.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        // Create thumbnails
+        imageNames.forEach((imageName, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
+            const img = document.createElement('img');
+            img.src = imageFolder + imageName;
+            img.alt = `Thumbnail ${index + 1}`;
+            thumbnail.appendChild(img);
+            thumbnail.onclick = () => goToSlide(index);
+            thumbnailContainer.appendChild(thumbnail);
+        });
+    }
+
+    // Update slider position
+    function updateSlider() {
+        const offset = -currentSlide * 100;
+        sliderTrack.style.transform = `translateX(${offset}%)`;
+        currentImageSpan.textContent = currentSlide + 1;
+
+        // Update active dot
+        document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail-item').forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+        currentSlide = index;
+        updateSlider();
+    }
+
+    // Next slide
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % imageNames.length;
+        updateSlider();
+    }
+
+    // Previous slide
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + imageNames.length) % imageNames.length;
+        updateSlider();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    sliderTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    sliderTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+            nextSlide();
+        }
+        if (touchEndX - touchStartX > 50) {
+            prevSlide();
+        }
+    }
+
+    // Initialize on page load
+    window.addEventListener('load', initSlider);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        initSlider();
+    }
+</script>
+
+</body>
+</html>
