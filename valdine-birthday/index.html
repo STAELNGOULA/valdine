@@ -1132,8 +1132,39 @@
     </div>
 </section>
 
+<!-- Code Protection Section -->
+<section id="codeProtectionSection" class="py-16 md:py-24 bg-gradient-to-br from-red-100 via-rose-100 to-pink-100 relative min-h-screen md:min-h-auto flex items-center justify-center">
+    <div class="max-w-md mx-auto px-4 md:px-6 w-full">
+        <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-4 md:border-8 border-rose-400">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6 pulse-heart">
+                    <i class="fa-solid fa-lock text-white text-3xl"></i>
+                </div>
+                <h2 class="script-font text-3xl md:text-4xl font-bold gradient-text mb-4">Just For You</h2>
+                <p class="text-purple-700 text-sm md:text-base">This message is private. Enter the code to unlock.</p>
+            </div>
+
+            <div class="space-y-4">
+                <input
+                    type="password"
+                    id="intimateCode"
+                    placeholder="Enter code"
+                    class="w-full px-4 py-3 border-2 border-rose-300 rounded-lg focus:outline-none focus:border-rose-500 text-center text-lg tracking-widest font-bold"
+                    maxlength="4"
+                >
+                <button
+                    onclick="unlockIntimate()"
+                    class="w-full bg-gradient-to-r from-red-500 to-rose-500 text-white py-3 rounded-lg font-bold hover:from-red-600 hover:to-rose-600 transition-all shadow-lg"
+                >
+                    Unlock
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Intimate Desires Section - Code Protected -->
-<section id="intimate-desires" class="py-16 md:py-24 bg-gradient-to-br from-red-100 via-rose-100 to-pink-100 relative min-h-screen md:min-h-auto flex items-center justify-center">
+<section id="intimate-desires" class="py-16 md:py-24 bg-gradient-to-br from-red-100 via-rose-100 to-pink-100 relative min-h-screen md:min-h-auto flex items-center justify-center hidden">
     <div class="max-w-4xl mx-auto px-4 md:px-6 w-full">
         <!-- Background Content (Always visible but blurred when locked) -->
         <div id="intimateContent" class="blur-none transition-all duration-300">
@@ -1208,37 +1239,6 @@
             </div>
         </div>
 
-        <!-- Code Entry Modal Overlay -->
-        <div id="intimateModal" class="modal show fixed inset-0 flex items-center justify-center z-50 px-4 hidden md:flex">
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-4 md:border-8 border-rose-400 max-w-md w-full">
-                <div class="text-center mb-8">
-                    <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6 pulse-heart">
-                        <i class="fa-solid fa-lock text-white text-3xl"></i>
-                    </div>
-                    <h2 class="script-font text-3xl md:text-4xl font-bold gradient-text mb-4">Just For You</h2>
-                    <p class="text-purple-700 text-sm md:text-base mb-2">This message is private. Enter the code to unlock.</p>
-                    <p class="text-xs text-rose-500 font-semibold">💡 Hint: Your MTN Momo code</p>
-                </div>
-
-                <div class="space-y-4">
-                    <input
-                        type="password"
-                        id="intimateCode"
-                        placeholder="Enter code"
-                        class="w-full px-4 py-3 border-2 border-rose-300 rounded-lg focus:outline-none focus:border-rose-500 text-center text-lg tracking-widest font-bold"
-                        maxlength="4"
-                    >
-                    <button
-                        onclick="unlockIntimate()"
-                        class="w-full bg-gradient-to-r from-red-500 to-rose-500 text-white py-3 rounded-lg font-bold hover:from-red-600 hover:to-rose-600 transition-all shadow-lg"
-                    >
-                        Unlock
-                    </button>
-                </div>
-
-                <p class="text-center text-xs text-gray-500 mt-6">💕 This message is just for you 💕</p>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -2427,18 +2427,16 @@
         const correctCode = '0159';
 
         if (code === correctCode) {
-            // Hide modal and remove blur from content
-            const modal = document.getElementById('intimateModal');
-            const content = document.getElementById('intimateContent');
+            // Hide code protection section and show intimate section
+            const codeSection = document.getElementById('codeProtectionSection');
+            const intimateSection = document.getElementById('intimate-desires');
 
-            modal.classList.remove('show');
-            modal.style.display = 'none';
-            content.classList.remove('blur-md');
-            content.classList.add('blur-none');
+            codeSection.classList.add('hidden');
+            intimateSection.classList.remove('hidden');
 
-            // Smooth scroll to content
+            // Smooth scroll to intimate section
             setTimeout(() => {
-                content.scrollIntoView({ behavior: 'smooth' });
+                intimateSection.scrollIntoView({ behavior: 'smooth' });
             }, 300);
         } else {
             // Show error
@@ -2454,15 +2452,13 @@
     }
 
     function lockIntimate() {
-        const modal = document.getElementById('intimateModal');
-        const content = document.getElementById('intimateContent');
+        const codeSection = document.getElementById('codeProtectionSection');
+        const intimateSection = document.getElementById('intimate-desires');
         const codeInput = document.getElementById('intimateCode');
 
-        // Reset and show modal with blur
-        content.classList.remove('blur-none');
-        content.classList.add('blur-md');
-        modal.classList.add('show');
-        modal.style.display = 'flex';
+        // Reset and show code section, hide intimate section
+        intimateSection.classList.add('hidden');
+        codeSection.classList.remove('hidden');
         codeInput.value = '';
         codeInput.placeholder = 'Enter code';
     }
@@ -2478,39 +2474,7 @@
             });
         }
 
-        // Initialize blur on page load
-        const content = document.getElementById('intimateContent');
-        if (content) {
-            content.classList.add('blur-md');
-        }
-
-        // Mobile: Show/hide modal based on section visibility
-        const intimateSection = document.getElementById('intimate-desires');
-        const intimateModal = document.getElementById('intimateModal');
-
-        if (intimateSection && intimateModal) {
-            // Check if device is mobile
-            const isMobile = window.innerWidth < 768;
-
-            if (isMobile) {
-                // Intersection Observer to detect when section is in view
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Section is visible, show modal
-                            intimateModal.classList.remove('hidden');
-                            intimateModal.classList.add('flex');
-                        } else {
-                            // Section is not visible, hide modal
-                            intimateModal.classList.add('hidden');
-                            intimateModal.classList.remove('flex');
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                observer.observe(intimateSection);
-            }
-        }
+        // Intimate section is hidden by default, shown only when code is entered
 
         // Fix music autoplay on mobile - try to play with user interaction
         const autoplayAudio = document.getElementById('autoplayMusic');
