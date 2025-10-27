@@ -1238,85 +1238,149 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
     </div>
 </section>
 
-<!-- Floating Music Controls - Compact Mobile Optimized -->
-<div id="musicControls" class="fixed bottom-4 left-4 z-50 bg-white/95 backdrop-blur-md rounded-full md:rounded-2xl shadow-xl border-2 border-pink-200 p-2 md:p-4 w-16 md:w-auto md:min-w-[250px] transform transition-all duration-300">
-    <!-- Compact Mobile View (Minimized by default) -->
-    <div class="flex items-center justify-between md:hidden">
-        <button id="playPauseBtn" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg">
-            <i class="fa-solid fa-pause text-xs"></i>
-        </button>
-        <button id="toggleControlsBtn" class="text-purple-500 hover:text-purple-700 transition-colors ml-1">
-            <i class="fa-solid fa-chevron-up text-xs"></i>
-        </button>
-    </div>
+<!-- Mobile Play Instruction Modal -->
+<div id="mobilePlayModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] md:hidden flex items-center justify-center p-4">
+    <div class="bg-gradient-to-br from-white via-pink-50 to-purple-50 rounded-3xl shadow-2xl p-8 max-w-sm w-full text-center border-2 border-pink-200 animate-bounce-gentle">
+        <!-- Decorative Elements -->
+        <div class="absolute top-4 left-4 text-3xl animate-pulse">💕</div>
+        <div class="absolute top-4 right-4 text-3xl animate-pulse">💕</div>
+        <div class="absolute bottom-4 left-6 text-2xl">🎵</div>
+        <div class="absolute bottom-4 right-6 text-2xl">🎵</div>
 
-    <!-- Desktop View (Full Controls) -->
-    <div class="hidden md:block">
-        <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+        <!-- Content -->
+        <div class="relative z-10">
+            <!-- Music Icon -->
+            <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg animate-pulse">
+                <i class="fa-solid fa-music text-white text-4xl"></i>
+            </div>
+
+            <!-- Text -->
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 mb-3">
+                Let's Start With Music
+            </h2>
+            <p class="text-gray-600 text-sm mb-8 leading-relaxed">
+                Press play to start the music and begin your journey through our love story 🎶
+            </p>
+
+            <!-- Play Button -->
+            <button id="mobilePlayBtn" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-full flex items-center justify-center space-x-3 shadow-lg transform hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-solid fa-play text-xl"></i>
+                <span>Play Music</span>
+            </button>
+
+            <!-- Hint -->
+            <p class="text-xs text-purple-500 mt-6 font-medium">
+                ✨ The music will play in the background while you scroll
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Music Controls - Enhanced Mobile & Desktop -->
+<div id="musicControls" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 z-50 bg-gradient-to-br from-white via-pink-50 to-purple-50 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-2xl border-2 border-pink-200 p-4 md:p-6 md:w-80 transform transition-all duration-300">
+    <!-- Mobile Compact View -->
+    <div class="md:hidden">
+        <!-- Header with Song Info -->
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2 flex-1">
+                <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center animate-pulse">
                     <i class="fa-solid fa-music text-white text-sm"></i>
                 </div>
-                <div>
-                    <p class="text-xs md:text-sm font-semibold text-purple-700">Now Playing</p>
-                    <p class="text-xs text-purple-500" id="currentSongTitle">A Thousand Years</p>
+                <div class="flex-1 min-w-0">
+                    <p class="text-xs font-semibold text-purple-700">Now Playing</p>
+                    <p class="text-xs text-purple-600 font-medium truncate" id="currentSongTitleMobile">A Thousand Years</p>
                 </div>
             </div>
-            <button id="toggleControlsBtn" class="text-purple-500 hover:text-purple-700 transition-colors">
-                <i class="fa-solid fa-chevron-up text-sm"></i>
-            </button>
         </div>
 
-        <div id="controlsContent" class="space-y-3">
-            <!-- Play/Pause Button -->
+        <!-- Main Controls -->
+        <div class="space-y-3">
+            <!-- Play/Pause and Mute Buttons -->
             <div class="flex items-center justify-center space-x-3">
-                <button id="playPauseBtn" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg">
-                    <i class="fa-solid fa-pause text-sm"></i>
+                <button id="playPauseBtnMobile" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-14 h-14 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95">
+                    <i class="fa-solid fa-play text-lg"></i>
                 </button>
-                <button id="muteBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all">
-                    <i class="fa-solid fa-volume-up text-xs"></i>
+                <button id="muteBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-volume-up text-base"></i>
                 </button>
             </div>
 
             <!-- Volume Slider -->
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-volume-down text-purple-500 text-xs"></i>
-                <input type="range" id="volumeSlider" min="0" max="100" value="30" class="flex-1 h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer slider">
-                <i class="fa-solid fa-volume-up text-purple-500 text-xs"></i>
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-volume-down text-purple-500 text-sm"></i>
+                <input type="range" id="volumeSliderMobile" min="0" max="100" value="30" class="flex-1 h-2 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg appearance-none cursor-pointer slider">
+                <i class="fa-solid fa-volume-up text-purple-500 text-sm"></i>
             </div>
 
             <!-- Song Progress -->
-            <div class="flex items-center space-x-2 text-xs text-purple-600">
-                <span id="currentTime">0:00</span>
-                <div class="flex-1 h-1 bg-purple-200 rounded-full overflow-hidden">
-                    <div id="progressBar" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300" style="width: 0%"></div>
+            <div class="space-y-2">
+                <div class="flex items-center space-x-2 text-xs text-purple-600 font-medium">
+                    <span id="currentTimeMobile">0:00</span>
+                    <div class="flex-1 h-2 bg-purple-200 rounded-full overflow-hidden cursor-pointer hover:h-3 transition-all">
+                        <div id="progressBarMobile" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <span id="durationMobile">0:00</span>
                 </div>
-                <span id="duration">0:00</span>
+            </div>
+
+            <!-- Song Indicator -->
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-2 h-2 rounded-full bg-pink-400"></div>
+                <p class="text-xs text-purple-600 font-medium" id="songIndicatorMobile">Song 1 of 2</p>
+                <div class="w-2 h-2 rounded-full bg-purple-400"></div>
             </div>
         </div>
     </div>
 
-    <!-- Mobile Expanded View (Hidden by default) -->
-    <div id="controlsContent" class="md:hidden hidden space-y-2 mt-2">
-        <!-- Volume Slider -->
-        <div class="flex items-center space-x-1">
-            <i class="fa-solid fa-volume-down text-purple-500 text-xs"></i>
-            <input type="range" id="volumeSlider" min="0" max="100" value="30" class="flex-1 h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer slider">
-            <i class="fa-solid fa-volume-up text-purple-500 text-xs"></i>
+    <!-- Desktop View (Full Controls) -->
+    <div class="hidden md:block">
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-3 flex-1">
+                <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center animate-pulse">
+                    <i class="fa-solid fa-music text-white text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-xs font-semibold text-purple-700">Now Playing</p>
+                    <p class="text-sm text-purple-600 font-medium truncate" id="currentSongTitleDesktop">A Thousand Years</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Mute Button -->
-        <button id="muteBtn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-1 rounded-lg transition-all text-xs font-semibold">
-            <i class="fa-solid fa-volume-up text-xs mr-1"></i> Mute
-        </button>
-
-        <!-- Song Progress -->
-        <div class="flex items-center space-x-1 text-xs text-purple-600">
-            <span id="currentTime">0:00</span>
-            <div class="flex-1 h-1 bg-purple-200 rounded-full overflow-hidden">
-                <div id="progressBar" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300" style="width: 0%"></div>
+        <div id="controlsContent" class="space-y-4">
+            <!-- Play/Pause and Mute Buttons -->
+            <div class="flex items-center justify-center space-x-4">
+                <button id="playPauseBtnDesktop" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-14 h-14 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95">
+                    <i class="fa-solid fa-play text-lg"></i>
+                </button>
+                <button id="muteBtnDesktop" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-volume-up text-base"></i>
+                </button>
             </div>
-            <span id="duration">0:00</span>
+
+            <!-- Volume Slider -->
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-volume-down text-purple-500 text-sm"></i>
+                <input type="range" id="volumeSliderDesktop" min="0" max="100" value="30" class="flex-1 h-2 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg appearance-none cursor-pointer slider">
+                <i class="fa-solid fa-volume-up text-purple-500 text-sm"></i>
+            </div>
+
+            <!-- Song Progress -->
+            <div class="space-y-2">
+                <div class="flex items-center space-x-2 text-xs text-purple-600 font-medium">
+                    <span id="currentTimeDesktop">0:00</span>
+                    <div class="flex-1 h-2 bg-purple-200 rounded-full overflow-hidden cursor-pointer hover:h-3 transition-all">
+                        <div id="progressBarDesktop" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <span id="durationDesktop">0:00</span>
+                </div>
+            </div>
+
+            <!-- Song Indicator -->
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-2 h-2 rounded-full bg-pink-400"></div>
+                <p class="text-xs text-purple-600 font-medium" id="songIndicatorDesktop">Song 1 of 2</p>
+                <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -2198,13 +2262,13 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
     let currentPlayingIndex = -1;
     let musicAudios = [];
     let autoplayAudio = null;
-    let isControlsMinimized = false;
+    let isMobilePlayModalShown = false;
 
     function initMusicPlayer() {
         musicAudios = document.querySelectorAll('#music audio');
         autoplayAudio = document.getElementById('autoplayMusic');
         const playAllBtn = document.getElementById('playAllMusic');
-        
+
         if (playAllBtn) {
             playAllBtn.addEventListener('click', playAllSongs);
         }
@@ -2223,65 +2287,100 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
                 pauseOtherAudios(index);
                 currentPlayingIndex = index;
                 updateMusicControls();
+                // Hide mobile modal when music starts playing
+                hideMobilePlayModal();
             });
 
             audio.addEventListener('pause', () => {
                 updateMusicControls();
             });
+
+            audio.addEventListener('timeupdate', () => {
+                if (currentPlayingIndex === index) {
+                    updateProgress();
+                }
+            });
         });
 
-        // Handle autoplay music
-        if (autoplayAudio) {
-            // Set initial volume and try to autoplay
-            setTimeout(() => {
-                autoplayAudio.volume = 0.3; // Set initial volume to 30%
-                autoplayAudio.play().then(() => {
-                    console.log('Background music started');
-                    updateMusicControls();
-                }).catch(error => {
-                    console.log('Auto-play prevented by browser:', error);
-                });
-            }, 1000); // Wait 1 second before trying to autoplay
+        // Check if mobile and show modal
+        if (window.innerWidth < 768) {
+            showMobilePlayModal();
         }
 
         // Initialize music controls
         initMusicControls();
     }
 
+    function showMobilePlayModal() {
+        const modal = document.getElementById('mobilePlayModal');
+        if (modal && !isMobilePlayModalShown) {
+            modal.style.display = 'flex';
+            isMobilePlayModalShown = true;
+        }
+    }
+
+    function hideMobilePlayModal() {
+        const modal = document.getElementById('mobilePlayModal');
+        if (modal) {
+            modal.style.display = 'none';
+            isMobilePlayModalShown = false;
+        }
+    }
+
     function initMusicControls() {
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const muteBtn = document.getElementById('muteBtn');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const toggleControlsBtn = document.getElementById('toggleControlsBtn');
-        const controlsContent = document.getElementById('controlsContent');
+        // Mobile controls
+        const playPauseBtnMobile = document.getElementById('playPauseBtnMobile');
+        const muteBtnMobile = document.getElementById('muteBtnMobile');
+        const volumeSliderMobile = document.getElementById('volumeSliderMobile');
+        const mobilePlayBtn = document.getElementById('mobilePlayBtn');
 
-        if (playPauseBtn) {
-            playPauseBtn.addEventListener('click', togglePlayPause);
+        // Desktop controls
+        const playPauseBtnDesktop = document.getElementById('playPauseBtnDesktop');
+        const muteBtnDesktop = document.getElementById('muteBtnDesktop');
+        const volumeSliderDesktop = document.getElementById('volumeSliderDesktop');
+
+        // Mobile modal play button
+        if (mobilePlayBtn) {
+            mobilePlayBtn.addEventListener('click', () => {
+                if (autoplayAudio) {
+                    autoplayAudio.volume = 0.3;
+                    autoplayAudio.play().catch(error => {
+                        console.log('Auto-play prevented:', error);
+                    });
+                }
+            });
         }
 
-        if (muteBtn) {
-            muteBtn.addEventListener('click', toggleMute);
+        // Mobile controls
+        if (playPauseBtnMobile) {
+            playPauseBtnMobile.addEventListener('click', togglePlayPause);
         }
 
-        if (volumeSlider) {
-            volumeSlider.addEventListener('input', function() {
+        if (muteBtnMobile) {
+            muteBtnMobile.addEventListener('click', toggleMute);
+        }
+
+        if (volumeSliderMobile) {
+            volumeSliderMobile.addEventListener('input', function() {
                 if (autoplayAudio) {
                     autoplayAudio.volume = this.value / 100;
                 }
             });
         }
 
-        if (toggleControlsBtn && controlsContent) {
-            toggleControlsBtn.addEventListener('click', function() {
-                isControlsMinimized = !isControlsMinimized;
-                if (isControlsMinimized) {
-                    controlsContent.classList.add('hidden');
-                    controlsContent.classList.remove('block');
-                    toggleControlsBtn.innerHTML = '<i class="fa-solid fa-chevron-down text-xs"></i>';
-                } else {
-                    controlsContent.classList.remove('hidden');
-                    controlsContent.classList.add('block');
-                    toggleControlsBtn.innerHTML = '<i class="fa-solid fa-chevron-up text-xs"></i>';
+        // Desktop controls
+        if (playPauseBtnDesktop) {
+            playPauseBtnDesktop.addEventListener('click', togglePlayPause);
+        }
+
+        if (muteBtnDesktop) {
+            muteBtnDesktop.addEventListener('click', toggleMute);
+        }
+
+        if (volumeSliderDesktop) {
+            volumeSliderDesktop.addEventListener('input', function() {
+                if (autoplayAudio) {
+                    autoplayAudio.volume = this.value / 100;
                 }
             });
         }
@@ -2309,54 +2408,127 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
     }
 
     function updateMusicControls() {
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const muteBtn = document.getElementById('muteBtn');
-        const volumeSlider = document.getElementById('volumeSlider');
+        // Mobile controls
+        const playPauseBtnMobile = document.getElementById('playPauseBtnMobile');
+        const muteBtnMobile = document.getElementById('muteBtnMobile');
+        const volumeSliderMobile = document.getElementById('volumeSliderMobile');
 
-        if (autoplayAudio && playPauseBtn) {
-            const icon = playPauseBtn.querySelector('i');
+        // Desktop controls
+        const playPauseBtnDesktop = document.getElementById('playPauseBtnDesktop');
+        const muteBtnDesktop = document.getElementById('muteBtnDesktop');
+        const volumeSliderDesktop = document.getElementById('volumeSliderDesktop');
+
+        // Update mobile play/pause button
+        if (autoplayAudio && playPauseBtnMobile) {
+            const icon = playPauseBtnMobile.querySelector('i');
             if (autoplayAudio.paused) {
-                icon.className = 'fa-solid fa-play text-sm';
+                icon.className = 'fa-solid fa-play text-lg';
             } else {
-                icon.className = 'fa-solid fa-pause text-sm';
+                icon.className = 'fa-solid fa-pause text-lg';
             }
         }
 
-        if (autoplayAudio && muteBtn) {
-            const icon = muteBtn.querySelector('i');
+        // Update desktop play/pause button
+        if (autoplayAudio && playPauseBtnDesktop) {
+            const icon = playPauseBtnDesktop.querySelector('i');
+            if (autoplayAudio.paused) {
+                icon.className = 'fa-solid fa-play text-lg';
+            } else {
+                icon.className = 'fa-solid fa-pause text-lg';
+            }
+        }
+
+        // Update mobile mute button
+        if (autoplayAudio && muteBtnMobile) {
+            const icon = muteBtnMobile.querySelector('i');
             if (autoplayAudio.muted) {
-                icon.className = 'fa-solid fa-volume-mute text-xs';
-                muteBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300');
-                muteBtn.classList.add('bg-red-200', 'hover:bg-red-300');
+                icon.className = 'fa-solid fa-volume-mute text-base';
+                muteBtnMobile.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                muteBtnMobile.classList.add('bg-red-200', 'hover:bg-red-300');
             } else {
-                icon.className = 'fa-solid fa-volume-up text-xs';
-                muteBtn.classList.remove('bg-red-200', 'hover:bg-red-300');
-                muteBtn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                icon.className = 'fa-solid fa-volume-up text-base';
+                muteBtnMobile.classList.remove('bg-red-200', 'hover:bg-red-300');
+                muteBtnMobile.classList.add('bg-gray-200', 'hover:bg-gray-300');
             }
         }
 
-        if (autoplayAudio && volumeSlider) {
-            volumeSlider.value = autoplayAudio.volume * 100;
+        // Update desktop mute button
+        if (autoplayAudio && muteBtnDesktop) {
+            const icon = muteBtnDesktop.querySelector('i');
+            if (autoplayAudio.muted) {
+                icon.className = 'fa-solid fa-volume-mute text-base';
+                muteBtnDesktop.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                muteBtnDesktop.classList.add('bg-red-200', 'hover:bg-red-300');
+            } else {
+                icon.className = 'fa-solid fa-volume-up text-base';
+                muteBtnDesktop.classList.remove('bg-red-200', 'hover:bg-red-300');
+                muteBtnDesktop.classList.add('bg-gray-200', 'hover:bg-gray-300');
+            }
         }
+
+        // Update mobile volume slider
+        if (autoplayAudio && volumeSliderMobile) {
+            volumeSliderMobile.value = autoplayAudio.volume * 100;
+        }
+
+        // Update desktop volume slider
+        if (autoplayAudio && volumeSliderDesktop) {
+            volumeSliderDesktop.value = autoplayAudio.volume * 100;
+        }
+
+        // Update song indicators
+        updateSongIndicator();
     }
 
     function updateProgress() {
         if (autoplayAudio) {
-            const currentTime = document.getElementById('currentTime');
-            const duration = document.getElementById('duration');
-            const progressBar = document.getElementById('progressBar');
+            // Mobile progress
+            const currentTimeMobile = document.getElementById('currentTimeMobile');
+            const durationMobile = document.getElementById('durationMobile');
+            const progressBarMobile = document.getElementById('progressBarMobile');
 
-            if (currentTime && !isNaN(autoplayAudio.currentTime)) {
-                currentTime.textContent = formatTime(autoplayAudio.currentTime);
+            // Desktop progress
+            const currentTimeDesktop = document.getElementById('currentTimeDesktop');
+            const durationDesktop = document.getElementById('durationDesktop');
+            const progressBarDesktop = document.getElementById('progressBarDesktop');
+
+            if (!isNaN(autoplayAudio.currentTime)) {
+                const timeStr = formatTime(autoplayAudio.currentTime);
+                if (currentTimeMobile) currentTimeMobile.textContent = timeStr;
+                if (currentTimeDesktop) currentTimeDesktop.textContent = timeStr;
             }
 
-            if (duration && !isNaN(autoplayAudio.duration)) {
-                duration.textContent = formatTime(autoplayAudio.duration);
+            if (!isNaN(autoplayAudio.duration)) {
+                const durationStr = formatTime(autoplayAudio.duration);
+                if (durationMobile) durationMobile.textContent = durationStr;
+                if (durationDesktop) durationDesktop.textContent = durationStr;
             }
 
-            if (progressBar && !isNaN(autoplayAudio.duration)) {
+            if (!isNaN(autoplayAudio.duration)) {
                 const progress = (autoplayAudio.currentTime / autoplayAudio.duration) * 100;
-                progressBar.style.width = progress + '%';
+                if (progressBarMobile) progressBarMobile.style.width = progress + '%';
+                if (progressBarDesktop) progressBarDesktop.style.width = progress + '%';
+            }
+        }
+    }
+
+    function updateSongIndicator() {
+        const indicatorMobile = document.getElementById('songIndicatorMobile');
+        const indicatorDesktop = document.getElementById('songIndicatorDesktop');
+
+        if (indicatorMobile) {
+            if (currentPlayingIndex >= 0 && currentPlayingIndex < musicAudios.length) {
+                indicatorMobile.textContent = 'Song ' + (currentPlayingIndex + 1) + ' of ' + musicAudios.length;
+            } else {
+                indicatorMobile.textContent = 'No song playing';
+            }
+        }
+
+        if (indicatorDesktop) {
+            if (currentPlayingIndex >= 0 && currentPlayingIndex < musicAudios.length) {
+                indicatorDesktop.textContent = 'Song ' + (currentPlayingIndex + 1) + ' of ' + musicAudios.length;
+            } else {
+                indicatorDesktop.textContent = 'No song playing';
             }
         }
     }
