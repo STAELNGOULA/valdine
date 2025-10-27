@@ -324,6 +324,8 @@
                 </div>
                 <h1 class="script-font text-2xl md:text-3xl font-bold gradient-text">Birthday Love</h1>
             </div>
+            <!-- Mobile "By NTS" -->
+            <div class="md:hidden text-xs text-purple-600 font-semibold">By NTS</div>
             <ul class="hidden md:flex items-center space-x-6 lg:space-x-8">
                 <li><a href="#hero" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Home</a></li>
                 <li><a href="#memories" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Memories</a></li>
@@ -1280,24 +1282,32 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
 <div id="musicControls" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 z-50 bg-gradient-to-br from-white via-pink-50 to-purple-50 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-2xl border-2 border-pink-200 p-3 md:p-6 md:w-80 transform transition-all duration-300">
     <!-- Mobile Compact View -->
     <div class="md:hidden">
-        <!-- Compact Controls Row -->
-        <div class="flex items-center justify-between gap-2">
-            <!-- Music Icon -->
+        <!-- Collapse/Expand Toggle -->
+        <div class="flex items-center justify-between mb-2">
             <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
                 <i class="fa-solid fa-music text-white text-xs"></i>
             </div>
+            <button id="toggleMobileControls" class="text-purple-600 hover:text-purple-800 transition-all transform hover:scale-110 active:scale-95 flex-shrink-0">
+                <i class="fa-solid fa-chevron-up text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Compact Controls Row (Collapsible) -->
+        <div id="mobileControlsContent" class="flex items-center justify-between gap-2 transition-all duration-300">
+            <!-- Previous Button -->
+            <button id="prevBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
+                <i class="fa-solid fa-step-backward text-xs"></i>
+            </button>
 
             <!-- Play/Pause Button -->
             <button id="playPauseBtnMobile" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 flex-shrink-0">
                 <i class="fa-solid fa-play text-sm"></i>
             </button>
 
-            <!-- Volume Slider (Compact) -->
-            <div class="flex items-center gap-1 flex-1 min-w-0">
-                <i class="fa-solid fa-volume-down text-purple-500 text-xs flex-shrink-0"></i>
-                <input type="range" id="volumeSliderMobile" min="0" max="100" value="30" class="flex-1 h-1.5 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg appearance-none cursor-pointer slider">
-                <i class="fa-solid fa-volume-up text-purple-500 text-xs flex-shrink-0"></i>
-            </div>
+            <!-- Next Button -->
+            <button id="nextBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
+                <i class="fa-solid fa-step-forward text-xs"></i>
+            </button>
 
             <!-- Mute Button -->
             <button id="muteBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
@@ -2321,6 +2331,10 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
         const muteBtnMobile = document.getElementById('muteBtnMobile');
         const volumeSliderMobile = document.getElementById('volumeSliderMobile');
         const mobilePlayBtn = document.getElementById('mobilePlayBtn');
+        const toggleMobileControls = document.getElementById('toggleMobileControls');
+        const mobileControlsContent = document.getElementById('mobileControlsContent');
+        const prevBtnMobile = document.getElementById('prevBtnMobile');
+        const nextBtnMobile = document.getElementById('nextBtnMobile');
 
         // Desktop controls
         const playPauseBtnDesktop = document.getElementById('playPauseBtnDesktop');
@@ -2339,6 +2353,20 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
             });
         }
 
+        // Mobile collapse/expand toggle
+        if (toggleMobileControls) {
+            toggleMobileControls.addEventListener('click', () => {
+                const icon = toggleMobileControls.querySelector('i');
+                if (mobileControlsContent.style.display === 'none') {
+                    mobileControlsContent.style.display = 'flex';
+                    icon.className = 'fa-solid fa-chevron-up text-lg';
+                } else {
+                    mobileControlsContent.style.display = 'none';
+                    icon.className = 'fa-solid fa-chevron-down text-lg';
+                }
+            });
+        }
+
         // Mobile controls
         if (playPauseBtnMobile) {
             playPauseBtnMobile.addEventListener('click', togglePlayPause);
@@ -2346,6 +2374,15 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
 
         if (muteBtnMobile) {
             muteBtnMobile.addEventListener('click', toggleMute);
+        }
+
+        // Mobile next/previous buttons
+        if (prevBtnMobile) {
+            prevBtnMobile.addEventListener('click', playPreviousSong);
+        }
+
+        if (nextBtnMobile) {
+            nextBtnMobile.addEventListener('click', playNextSong);
         }
 
         if (volumeSliderMobile) {
@@ -2537,6 +2574,17 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
             musicAudios[0].play().catch(error => {
                 console.log('Auto-play prevented:', error);
                 alert('Please click on individual songs to play them. Some browsers prevent auto-play.');
+            });
+        }
+    }
+
+    function playPreviousSong() {
+        if (currentPlayingIndex > 0) {
+            currentPlayingIndex--;
+            musicAudios[currentPlayingIndex].currentTime = 0;
+            musicAudios[currentPlayingIndex].volume = 0.5;
+            musicAudios[currentPlayingIndex].play().catch(error => {
+                console.log('Auto-play prevented:', error);
             });
         }
     }
