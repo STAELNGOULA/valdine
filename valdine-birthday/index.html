@@ -331,6 +331,7 @@
                 <li><a href="#gallery" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Gallery</a></li>
                 <li><a href="#video-gallery" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Videos</a></li>
                 <li><a href="#surprise" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Surprise</a></li>
+                <li><a href="#music" class="text-purple-700 hover:text-pink-500 font-semibold transition-colors duration-300 text-sm lg:text-base">Music</a></li>
             </ul>
         </nav>
     </div>
@@ -733,14 +734,14 @@
         <div class="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden">
             <!-- Main Video Display -->
             <div class="relative w-full bg-black" style="aspect-ratio: 16/9;">
-                <video id="mainVideo" class="w-full h-full object-contain" controls playsinline>
-                    <source src="/images/Valdine (1).mp4" type="video/mp4">
+                <video id="mainVideo" class="w-full h-full object-contain" controls playsinline autoplay loop muted>
+                    <source src="/images/VIDEO AYARR START.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 
                 <!-- Mobile Video Counter -->
                 <div class="absolute top-2 right-2 md:top-4 md:right-4 bg-black bg-opacity-70 text-white px-2 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-base font-bold">
-                    <span id="videoCounter">1</span> / <span id="videoTotal">8</span>
+                    <span id="videoCounter">1</span> / <span id="videoTotal">9</span>
                 </div>
             </div>
 
@@ -1007,6 +1008,166 @@
             padding-left: 1.5rem;
         }
     }
+</style>
+
+<!-- Feel My Heart Through Music Section -->
+<section id="music" class="py-16 md:py-24 bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
+        <div class="mb-12 md:mb-16">
+            <h2 class="script-font text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 md:mb-6">🎵 Feel My Heart Through Music 🎵</h2>
+            <p class="text-lg md:text-xl text-purple-700 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
+                Before you close this page, take a moment to listen to these three songs.
+                Each one captures a different feeling of our love story. Close your eyes,
+                feel the music, and know that this is how my heart sounds when I think of you.
+            </p>
+            <p class="text-base md:text-lg text-purple-600 font-medium italic">
+                💫 Listen in order for the full emotional journey 💫
+            </p>
+        </div>
+
+        <!-- Music Cards Grid -->
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+            <!-- Song 1: River Flows in You -->
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <div class="text-6xl md:text-7xl mb-4 md:mb-6">🎹</div>
+                <h3 class="script-font text-xl md:text-2xl lg:text-3xl font-bold text-purple-600 mb-3 md:mb-4">River Flows in You</h3>
+                <p class="text-sm md:text-base text-purple-700 mb-4 md:mb-6 leading-relaxed">
+                    "This is how gently you flow through my thoughts every single day - peaceful, beautiful, and endless"
+                </p>
+                <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-3 md:p-4 mb-4">
+                    <audio controls class="w-full" preload="metadata">
+                        <source src="/audio/river-flows-in-you.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <p class="text-xs md:text-sm text-purple-500 italic">*Best experienced with eyes closed*</p>
+            </div>
+
+            <!-- Song 2: A Thousand Years -->
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <div class="text-6xl md:text-7xl mb-4 md:mb-6">💕</div>
+                <h3 class="script-font text-xl md:text-2xl lg:text-3xl font-bold text-pink-600 mb-3 md:mb-4">A Thousand Years</h3>
+                <p class="text-sm md:text-base text-purple-700 mb-4 md:mb-6 leading-relaxed">
+                    "How long I'd wait for you, how long I've loved you, and how long I'll continue loving you - forever"
+                </p>
+                <div class="bg-gradient-to-r from-pink-100 to-rose-100 rounded-xl p-3 md:p-4 mb-4">
+                    <audio id="autoplayMusic" controls class="w-full" preload="auto" autoplay loop>
+                        <source src="/audio/a-thousand-years-piano.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <p class="text-xs md:text-sm text-pink-500 italic">*Think of our future together*</p>
+            </div>
+
+            <!-- Song 3: Canon in D -->
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                <div class="text-6xl md:text-7xl mb-4 md:mb-6">👑</div>
+                <h3 class="script-font text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600 mb-3 md:mb-4">Canon in D</h3>
+                <p class="text-sm md:text-base text-purple-700 mb-4 md:mb-6 leading-relaxed">
+                    "The timeless elegance you bring to everything - classic, refined, and eternally beautiful"
+                </p>
+                <div class="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-xl p-3 md:p-4 mb-4">
+                    <audio controls class="w-full" preload="metadata">
+                        <source src="/audio/canon-in-d.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <p class="text-xs md:text-sm text-indigo-500 italic">*Feel the grace of our love*</p>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl border-2 border-pink-200">
+            <h4 class="script-font text-2xl md:text-3xl font-bold text-purple-600 mb-4">After Listening...</h4>
+            <p class="text-base md:text-lg text-purple-700 leading-relaxed mb-4">
+                This is how my heart sounds when I love you - sometimes gentle like a flowing river, 
+                sometimes powerful like a thousand-year promise, sometimes elegant like a classical masterpiece.
+            </p>
+            <p class="text-lg md:text-xl font-semibold text-pink-600">
+                💕 Thank you for being the melody of my life 💕
+            </p>
+        </div>
+
+        <!-- Play All Button -->
+        <div class="mt-8 md:mt-12">
+            <button id="playAllMusic" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 md:px-12 py-3 md:py-4 rounded-full text-base md:text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <i class="fa-solid fa-play mr-2"></i>Play All Songs (Continuous)
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Floating Music Controls -->
+<div id="musicControls" class="fixed bottom-4 left-4 z-50 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border-2 border-pink-200 p-3 md:p-4 min-w-[200px] md:min-w-[250px] transform transition-all duration-300">
+    <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-music text-white text-sm"></i>
+            </div>
+            <div>
+                <p class="text-xs md:text-sm font-semibold text-purple-700">Now Playing</p>
+                <p class="text-xs text-purple-500" id="currentSongTitle">A Thousand Years</p>
+            </div>
+        </div>
+        <button id="toggleControlsBtn" class="text-purple-500 hover:text-purple-700 transition-colors">
+            <i class="fa-solid fa-chevron-up text-sm"></i>
+        </button>
+    </div>
+    
+    <div id="controlsContent" class="space-y-3">
+        <!-- Play/Pause Button -->
+        <div class="flex items-center justify-center space-x-3">
+            <button id="playPauseBtn" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg">
+                <i class="fa-solid fa-pause text-sm"></i>
+            </button>
+            <button id="muteBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all">
+                <i class="fa-solid fa-volume-up text-xs"></i>
+            </button>
+        </div>
+        
+        <!-- Volume Slider -->
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-volume-down text-purple-500 text-xs"></i>
+            <input type="range" id="volumeSlider" min="0" max="100" value="30" class="flex-1 h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer slider">
+            <i class="fa-solid fa-volume-up text-purple-500 text-xs"></i>
+        </div>
+        
+        <!-- Song Progress -->
+        <div class="flex items-center space-x-2 text-xs text-purple-600">
+            <span id="currentTime">0:00</span>
+            <div class="flex-1 h-1 bg-purple-200 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300" style="width: 0%"></div>
+            </div>
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Slider Styles -->
+<style>
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ec4899, #a855f7);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ec4899, #a855f7);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 </style>
 
 <!-- Footer -->
@@ -1740,6 +1901,7 @@
 
     // ===== VIDEO GALLERY SLIDER =====
     const videos = [
+        '/images/VIDEO AYARR START.mp4',
         '/images/Valdine (1).mp4',
         '/images/Valdine (2).mp4',
         '/images/Valdine (3).mp4',
@@ -1751,6 +1913,7 @@
     ];
 
     const videoTitles = [
+        'Our Beautiful Beginning',
         'Beautiful Moments',
         'Our Journey',
         'Love Story',
@@ -1861,15 +2024,238 @@
     window.addEventListener('load', () => {
         initSlider();
         initVideoSlider();
+        initMusicPlayer();
     });
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             initSlider();
             initVideoSlider();
+            initMusicPlayer();
         });
     } else {
         initSlider();
         initVideoSlider();
+        initMusicPlayer();
+    }
+
+    // ===== MUSIC PLAYER FUNCTIONALITY =====
+    let currentPlayingIndex = -1;
+    let musicAudios = [];
+    let autoplayAudio = null;
+    let isControlsMinimized = false;
+
+    function initMusicPlayer() {
+        musicAudios = document.querySelectorAll('#music audio');
+        autoplayAudio = document.getElementById('autoplayMusic');
+        const playAllBtn = document.getElementById('playAllMusic');
+        
+        if (playAllBtn) {
+            playAllBtn.addEventListener('click', playAllSongs);
+        }
+
+        // Add event listeners to individual audio players
+        musicAudios.forEach((audio, index) => {
+            audio.addEventListener('ended', () => {
+                if (currentPlayingIndex === index) {
+                    // Auto-play next song
+                    playNextSong();
+                }
+            });
+
+            audio.addEventListener('play', () => {
+                // Pause other audio players when one starts
+                pauseOtherAudios(index);
+                currentPlayingIndex = index;
+                updateMusicControls();
+            });
+
+            audio.addEventListener('pause', () => {
+                updateMusicControls();
+            });
+        });
+
+        // Handle autoplay music
+        if (autoplayAudio) {
+            // Set initial volume and try to autoplay
+            setTimeout(() => {
+                autoplayAudio.volume = 0.3; // Set initial volume to 30%
+                autoplayAudio.play().then(() => {
+                    console.log('Background music started');
+                    updateMusicControls();
+                }).catch(error => {
+                    console.log('Auto-play prevented by browser:', error);
+                });
+            }, 1000); // Wait 1 second before trying to autoplay
+        }
+
+        // Initialize music controls
+        initMusicControls();
+    }
+
+    function initMusicControls() {
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const toggleControlsBtn = document.getElementById('toggleControlsBtn');
+        const controlsContent = document.getElementById('controlsContent');
+
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener('click', togglePlayPause);
+        }
+
+        if (muteBtn) {
+            muteBtn.addEventListener('click', toggleMute);
+        }
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', function() {
+                if (autoplayAudio) {
+                    autoplayAudio.volume = this.value / 100;
+                }
+            });
+        }
+
+        if (toggleControlsBtn && controlsContent) {
+            toggleControlsBtn.addEventListener('click', function() {
+                isControlsMinimized = !isControlsMinimized;
+                if (isControlsMinimized) {
+                    controlsContent.style.display = 'none';
+                    toggleControlsBtn.innerHTML = '<i class="fa-solid fa-chevron-up text-sm"></i>';
+                } else {
+                    controlsContent.style.display = 'block';
+                    toggleControlsBtn.innerHTML = '<i class="fa-solid fa-chevron-down text-sm"></i>';
+                }
+            });
+        }
+
+        // Update progress bar
+        setInterval(updateProgress, 1000);
+    }
+
+    function togglePlayPause() {
+        if (autoplayAudio) {
+            if (autoplayAudio.paused) {
+                autoplayAudio.play();
+            } else {
+                autoplayAudio.pause();
+            }
+            updateMusicControls();
+        }
+    }
+
+    function toggleMute() {
+        if (autoplayAudio) {
+            autoplayAudio.muted = !autoplayAudio.muted;
+            updateMusicControls();
+        }
+    }
+
+    function updateMusicControls() {
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        if (autoplayAudio && playPauseBtn) {
+            const icon = playPauseBtn.querySelector('i');
+            if (autoplayAudio.paused) {
+                icon.className = 'fa-solid fa-play text-sm';
+            } else {
+                icon.className = 'fa-solid fa-pause text-sm';
+            }
+        }
+
+        if (autoplayAudio && muteBtn) {
+            const icon = muteBtn.querySelector('i');
+            if (autoplayAudio.muted) {
+                icon.className = 'fa-solid fa-volume-mute text-xs';
+                muteBtn.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                muteBtn.classList.add('bg-red-200', 'hover:bg-red-300');
+            } else {
+                icon.className = 'fa-solid fa-volume-up text-xs';
+                muteBtn.classList.remove('bg-red-200', 'hover:bg-red-300');
+                muteBtn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+            }
+        }
+
+        if (autoplayAudio && volumeSlider) {
+            volumeSlider.value = autoplayAudio.volume * 100;
+        }
+    }
+
+    function updateProgress() {
+        if (autoplayAudio) {
+            const currentTime = document.getElementById('currentTime');
+            const duration = document.getElementById('duration');
+            const progressBar = document.getElementById('progressBar');
+
+            if (currentTime && !isNaN(autoplayAudio.currentTime)) {
+                currentTime.textContent = formatTime(autoplayAudio.currentTime);
+            }
+
+            if (duration && !isNaN(autoplayAudio.duration)) {
+                duration.textContent = formatTime(autoplayAudio.duration);
+            }
+
+            if (progressBar && !isNaN(autoplayAudio.duration)) {
+                const progress = (autoplayAudio.currentTime / autoplayAudio.duration) * 100;
+                progressBar.style.width = progress + '%';
+            }
+        }
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
+
+    function playAllSongs() {
+        currentPlayingIndex = 0;
+        pauseAllAudios();
+        
+        if (musicAudios.length > 0) {
+            musicAudios[0].currentTime = 0;
+            musicAudios[0].volume = 0.5;
+            musicAudios[0].play().catch(error => {
+                console.log('Auto-play prevented:', error);
+                alert('Please click on individual songs to play them. Some browsers prevent auto-play.');
+            });
+        }
+    }
+
+    function playNextSong() {
+        if (currentPlayingIndex < musicAudios.length - 1) {
+            currentPlayingIndex++;
+            musicAudios[currentPlayingIndex].currentTime = 0;
+            musicAudios[currentPlayingIndex].volume = 0.5;
+            musicAudios[currentPlayingIndex].play().catch(error => {
+                console.log('Auto-play prevented:', error);
+            });
+        } else {
+            // All songs finished
+            currentPlayingIndex = -1;
+            const playAllBtn = document.getElementById('playAllMusic');
+            if (playAllBtn) {
+                playAllBtn.innerHTML = '<i class="fa-solid fa-heart mr-2"></i>Music Journey Complete';
+                setTimeout(() => {
+                    playAllBtn.innerHTML = '<i class="fa-solid fa-play mr-2"></i>Play All Songs (Continuous)';
+                }, 3000);
+            }
+        }
+    }
+
+    function pauseAllAudios() {
+        musicAudios.forEach(audio => {
+            audio.pause();
+        });
+    }
+
+    function pauseOtherAudios(exceptIndex) {
+        musicAudios.forEach((audio, index) => {
+            if (index !== exceptIndex) {
+                audio.pause();
+            }
+        });
     }
 </script>
 
