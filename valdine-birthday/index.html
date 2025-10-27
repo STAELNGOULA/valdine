@@ -1209,7 +1209,7 @@
         </div>
 
         <!-- Code Entry Modal Overlay -->
-        <div id="intimateModal" class="modal show fixed inset-0 flex items-center justify-center z-50 px-4">
+        <div id="intimateModal" class="modal show fixed inset-0 flex items-center justify-center z-50 px-4 hidden md:flex">
             <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-4 md:border-8 border-rose-400 max-w-md w-full">
                 <div class="text-center mb-8">
                     <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6 pulse-heart">
@@ -2482,6 +2482,50 @@
         const content = document.getElementById('intimateContent');
         if (content) {
             content.classList.add('blur-md');
+        }
+
+        // Mobile: Show/hide modal based on section visibility
+        const intimateSection = document.getElementById('intimate-desires');
+        const intimateModal = document.getElementById('intimateModal');
+
+        if (intimateSection && intimateModal) {
+            // Check if device is mobile
+            const isMobile = window.innerWidth < 768;
+
+            if (isMobile) {
+                // Intersection Observer to detect when section is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Section is visible, show modal
+                            intimateModal.classList.remove('hidden');
+                            intimateModal.classList.add('flex');
+                        } else {
+                            // Section is not visible, hide modal
+                            intimateModal.classList.add('hidden');
+                            intimateModal.classList.remove('flex');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(intimateSection);
+            }
+        }
+
+        // Fix music autoplay on mobile - try to play with user interaction
+        const autoplayAudio = document.getElementById('autoplayMusic');
+        if (autoplayAudio) {
+            // Try to play immediately
+            autoplayAudio.volume = 0.3;
+            autoplayAudio.play().catch(error => {
+                console.log('Initial autoplay prevented:', error);
+                // If autoplay fails, try again after a short delay
+                setTimeout(() => {
+                    autoplayAudio.play().catch(err => {
+                        console.log('Retry autoplay prevented:', err);
+                    });
+                }, 500);
+            });
         }
     });
 </script>
