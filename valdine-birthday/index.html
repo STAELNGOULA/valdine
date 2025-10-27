@@ -80,6 +80,106 @@
             0% { transform: translateX(-20px); opacity: 0; }
             100% { transform: translateX(0); opacity: 1; }
         }
+        /* Parallax Effects */
+        .parallax-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .floating-heart {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float-parallax 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes float-parallax {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-30px) translateX(10px); }
+            50% { transform: translateY(-60px) translateX(-10px); }
+            75% { transform: translateY(-30px) translateX(10px); }
+        }
+        .floating-heart.slow {
+            animation-duration: 12s;
+            animation-delay: 0s;
+        }
+        .floating-heart.medium {
+            animation-duration: 10s;
+            animation-delay: -2s;
+        }
+        .floating-heart.fast {
+            animation-duration: 8s;
+            animation-delay: -4s;
+        }
+        .confetti-layer {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .confetti-piece {
+            position: absolute;
+            opacity: 0.4;
+            animation: confetti-fall linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .confetti-piece.slow { animation-duration: 15s; }
+        .confetti-piece.medium { animation-duration: 10s; }
+        .confetti-piece.fast { animation-duration: 6s; }
+        .star-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .rose-petal {
+            position: fixed;
+            font-size: 1.5rem;
+            opacity: 0.5;
+            animation: petal-fall linear infinite;
+            pointer-events: none;
+        }
+        @keyframes petal-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .petal-slow { animation-duration: 12s; }
+        .petal-medium { animation-duration: 8s; }
+        .petal-fast { animation-duration: 5s; }
+        .parallax-text {
+            position: relative;
+            z-index: 1;
+        }
+        .parallax-depth {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
         /* Modal Styles */
         .modal {
             display: none;
@@ -304,6 +404,19 @@
     </style>
 </head>
 <body class="bg-gradient-to-br from-pink-100 via-purple-50 to-yellow-100 min-h-screen overflow-x-hidden">
+
+<!-- Parallax Background Layers -->
+<!-- Star Field Background -->
+<div id="starField" class="star-field"></div>
+
+<!-- Floating Hearts Parallax -->
+<div id="floatingHeartsContainer" class="fixed inset-0 pointer-events-none z-10"></div>
+
+<!-- Rose Petals Parallax -->
+<div id="rosePetalsContainer" class="fixed inset-0 pointer-events-none z-10"></div>
+
+<!-- Confetti Layers Parallax -->
+<div id="confettiLayersContainer" class="confetti-layer"></div>
 
 <!-- Floating Confetti Elements -->
 <div class="fixed inset-0 pointer-events-none z-50">
@@ -1280,54 +1393,15 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
 
 <!-- Floating Music Controls - Enhanced Mobile & Desktop -->
 <div id="musicControls" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 z-50 bg-gradient-to-br from-white via-pink-50 to-purple-50 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-2xl border-2 border-pink-200 p-3 md:p-6 md:w-80 transform transition-all duration-300">
-    <!-- Mobile Compact View -->
-    <div class="md:hidden">
-        <!-- Collapse/Expand Toggle -->
-        <div class="flex items-center justify-between mb-2">
-            <div class="w-8 h-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
-                <i class="fa-solid fa-music text-white text-xs"></i>
-            </div>
-            <button id="toggleMobileControls" class="text-purple-600 hover:text-purple-800 transition-all transform hover:scale-110 active:scale-95 flex-shrink-0">
-                <i class="fa-solid fa-chevron-up text-lg"></i>
-            </button>
+    <!-- Mobile Compact View - Only Play/Pause -->
+    <div class="md:hidden flex items-center justify-center gap-4">
+        <div class="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+            <i class="fa-solid fa-music text-white text-sm"></i>
         </div>
-
-        <!-- Compact Controls Row (Collapsible) -->
-        <div id="mobileControlsContent" class="flex items-center justify-between gap-2 transition-all duration-300">
-            <!-- Previous Button -->
-            <button id="prevBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
-                <i class="fa-solid fa-step-backward text-xs"></i>
-            </button>
-
-            <!-- Play/Pause Button -->
-            <button id="playPauseBtnMobile" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95 flex-shrink-0">
-                <i class="fa-solid fa-play text-sm"></i>
-            </button>
-
-            <!-- Next Button -->
-            <button id="nextBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
-                <i class="fa-solid fa-step-forward text-xs"></i>
-            </button>
-
-            <!-- Mute Button -->
-            <button id="muteBtnMobile" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center transition-all shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95 flex-shrink-0">
-                <i class="fa-solid fa-volume-up text-xs"></i>
-            </button>
-        </div>
-
-        <!-- Progress Bar (Compact) -->
-        <div class="mt-2 flex items-center gap-1 text-xs text-purple-600 font-medium">
-            <span id="currentTimeMobile" class="flex-shrink-0">0:00</span>
-            <div class="flex-1 h-1 bg-purple-200 rounded-full overflow-hidden cursor-pointer">
-                <div id="progressBarMobile" class="h-full bg-gradient-to-r from-pink-400 to-purple-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
-            </div>
-            <span id="durationMobile" class="flex-shrink-0">0:00</span>
-        </div>
-
-        <!-- Song Indicator (Compact) -->
-        <div class="mt-1 text-center">
-            <p class="text-xs text-purple-600 font-medium" id="songIndicatorMobile">Song 1 of 2</p>
-        </div>
+        <!-- Play/Pause Button -->
+        <button id="playPauseBtnMobile" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white w-12 h-12 rounded-full flex items-center justify-center hover:from-pink-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-xl transform hover:scale-110 active:scale-95">
+            <i class="fa-solid fa-play text-base"></i>
+        </button>
     </div>
 
     <!-- Desktop View (Full Controls) -->
@@ -2246,11 +2320,13 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
     });
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
+            initParallaxEffects();
             initSlider();
             initVideoSlider();
             initMusicPlayer();
         });
     } else {
+        initParallaxEffects();
         initSlider();
         initVideoSlider();
         initMusicPlayer();
@@ -2325,16 +2401,89 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
         }
     }
 
+    // Initialize Parallax Effects
+    function initParallaxEffects() {
+        // Create star field
+        const starField = document.getElementById('starField');
+        if (starField) {
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starField.appendChild(star);
+            }
+        }
+
+        // Create floating hearts
+        const heartsContainer = document.getElementById('floatingHeartsContainer');
+        if (heartsContainer) {
+            const heartEmojis = ['💕', '❤️', '💖', '💗', '💝'];
+            const speeds = ['slow', 'medium', 'fast'];
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.className = `floating-heart ${speeds[Math.floor(Math.random() * speeds.length)]}`;
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 50 + '%';
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Create rose petals
+        const petalsContainer = document.getElementById('rosePetalsContainer');
+        if (petalsContainer) {
+            const petalSpeeds = ['petal-slow', 'petal-medium', 'petal-fast'];
+            for (let i = 0; i < 6; i++) {
+                const petal = document.createElement('div');
+                petal.className = `rose-petal ${petalSpeeds[Math.floor(Math.random() * petalSpeeds.length)]}`;
+                petal.textContent = '🌹';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.top = -50 + 'px';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                petalsContainer.appendChild(petal);
+            }
+        }
+
+        // Create confetti layers
+        const confettiContainer = document.getElementById('confettiLayersContainer');
+        if (confettiContainer) {
+            const confettiEmojis = ['🎉', '🎊', '✨', '🎈', '🎁'];
+            const confettiSpeeds = ['slow', 'medium', 'fast'];
+            for (let i = 0; i < 12; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = `confetti-piece ${confettiSpeeds[Math.floor(Math.random() * confettiSpeeds.length)]}`;
+                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -50 + 'px';
+                confetti.style.animationDelay = Math.random() * 10 + 's';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        // Add scroll parallax effect
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const hearts = document.querySelectorAll('.floating-heart');
+            const petals = document.querySelectorAll('.rose-petal');
+
+            hearts.forEach((heart, index) => {
+                const speed = 0.5 + (index % 3) * 0.2;
+                heart.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+
+            petals.forEach((petal, index) => {
+                const speed = 0.3 + (index % 2) * 0.15;
+                petal.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        });
+    }
+
     function initMusicControls() {
         // Mobile controls
         const playPauseBtnMobile = document.getElementById('playPauseBtnMobile');
-        const muteBtnMobile = document.getElementById('muteBtnMobile');
-        const volumeSliderMobile = document.getElementById('volumeSliderMobile');
         const mobilePlayBtn = document.getElementById('mobilePlayBtn');
-        const toggleMobileControls = document.getElementById('toggleMobileControls');
-        const mobileControlsContent = document.getElementById('mobileControlsContent');
-        const prevBtnMobile = document.getElementById('prevBtnMobile');
-        const nextBtnMobile = document.getElementById('nextBtnMobile');
 
         // Desktop controls
         const playPauseBtnDesktop = document.getElementById('playPauseBtnDesktop');
@@ -2353,44 +2502,9 @@ I want to put my mouth on you and lick you slow, making you soak and shake befor
             });
         }
 
-        // Mobile collapse/expand toggle
-        if (toggleMobileControls) {
-            toggleMobileControls.addEventListener('click', () => {
-                const icon = toggleMobileControls.querySelector('i');
-                if (mobileControlsContent.style.display === 'none') {
-                    mobileControlsContent.style.display = 'flex';
-                    icon.className = 'fa-solid fa-chevron-up text-lg';
-                } else {
-                    mobileControlsContent.style.display = 'none';
-                    icon.className = 'fa-solid fa-chevron-down text-lg';
-                }
-            });
-        }
-
-        // Mobile controls
+        // Mobile play/pause button
         if (playPauseBtnMobile) {
             playPauseBtnMobile.addEventListener('click', togglePlayPause);
-        }
-
-        if (muteBtnMobile) {
-            muteBtnMobile.addEventListener('click', toggleMute);
-        }
-
-        // Mobile next/previous buttons
-        if (prevBtnMobile) {
-            prevBtnMobile.addEventListener('click', playPreviousSong);
-        }
-
-        if (nextBtnMobile) {
-            nextBtnMobile.addEventListener('click', playNextSong);
-        }
-
-        if (volumeSliderMobile) {
-            volumeSliderMobile.addEventListener('input', function() {
-                if (autoplayAudio) {
-                    autoplayAudio.volume = this.value / 100;
-                }
-            });
         }
 
         // Desktop controls
